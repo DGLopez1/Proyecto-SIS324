@@ -16,3 +16,4 @@ router.get('/Views/login', (req, res) => {
     res.render('login');
 });
 
+module.exports = router;
