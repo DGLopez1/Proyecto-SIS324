@@ -1,0 +1,280 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #83adff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    // justify-content: center;
+    align-items: center;
+
+    .home {
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .medi-conect {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        gap: 15px;
+        height: 100%;
+        img {
+            width: 50px;
+            height: 50px;
+        }
+
+        h2 {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    .autentication {
+        a {
+            color: white;
+            margin-right: 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.main {
+    width: 100%;
+    display: flex;
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        height: 100vh;
+        background: rgb(55, 0, 255);
+        padding: 10px;
+        align-items: center;
+        gap: 20px;
+
+        .logo {
+            
+            img {
+                margin-top: 15px;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+        }
+
+        .navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 10px;
+
+            a {
+                color: black;
+                text-decoration: none;
+                padding: 10px;
+                background: rgb(40, 176, 225);
+                border-radius: 4px;
+                text-align: center;
+                font-weight: bold;
+
+                &:hover {
+                    background: rgb(0, 255, 255);
+                }
+            }
+        }
+    }
+
+    .contenido {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        align-items: center;
+        width: 80%;
+
+        .introduccion {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+
+            h2 {
+                text-align: center;
+                color: blue;
+            }
+
+            p {
+                font-size: 1.1rem;
+            }
+
+            ol li a {
+                color: rgb(4, 151, 225);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .footer {
+                text-align: center;
+                font-size: 1.2rem;
+            }
+        }
+
+        // STYLES PARA MEDICOS
+        .container-medicos {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+
+            .container-buscar {
+                background-color: rgb(221, 240, 253);
+                padding: 20px;
+                text-align: center;
+                color: white;
+                border-radius: 4px;
+
+                .buscar {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .option-buscar {
+                        display: flex;
+                        margin-right: 10px;
+
+                        #dato {
+                            padding: 10px;
+                            border: none;
+                            border-radius: 5px;
+                            margin-right: 10px;
+                            width: 200px;
+                        }
+                        
+                        select {
+                            padding: 10px;
+                            border: none;
+                            border-radius: 5px;
+                            width: 200px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    button {
+                        background-color: #2ecc71;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                    
+                    button:hover {
+                        background-color: #27ae60;
+                    }
+                }
+
+                @media only screen and (max-width: 600px) {
+                    .buscar {
+                        flex-direction: column;
+                    }
+                
+                    #dato, select, button {
+                        width: 100%;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            .card-medico {
+                display: flex;
+                width: 80%;
+                margin-top: 40px;
+                height: 80%;
+                gap: 10px;
+                padding: 10px;
+                background: #ffffff90;
+                border-radius: 10px;
+                box-shadow: -10px 5px 15px -8px black;
+
+                img {
+                    width: 250px;
+                    border-radius: 50%;
+                }
+
+                .perfil {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 10px;
+                    gap: 8px;
+
+                    .datos {
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                        padding-left: 10px;
+                    }
+
+                    h3 {
+                        color: red;
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .informacion {
+                    display: flex;
+                    flex-direction: column;
+                    // height: 100%;
+
+                    h2 {
+                        font-size: 1.6rem;
+                        text-align: center;
+                    }
+
+                    h3 {
+                        font-size: 1.3rem;
+                        color: blue;
+                    }
+
+                    .datos-info {
+                        font-size: 1.2rem;
+                    }
+
+                    a {
+                        margin-top: 10px;
+                        background: orangered;
+                        width: 70px;
+                        padding: 5px;
+                        color: white;
+                        border-radius: 5px;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

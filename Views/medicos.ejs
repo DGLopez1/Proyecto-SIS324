@@ -1,0 +1,74 @@
+<div class="container-medicos">
+    <h1>Medicos en sus Especialidades</h1>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Cuenta</th>
+                <th>Clave</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Estampa</th>
+                <th>Operaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% listaMedicos.forEach(medicos =>{ %>
+                <tr>
+                    <td><%= medicos.id %></td>
+                    <td><%= medicos.fotografia %></td>
+                    <td><%= medicos.nombre %></td>
+                    <td><%= medicos.apellido %></td>
+                    <td><%= medicos.telefono %></td>
+                    <td><%= medicos.email %></td>
+                </tr>
+           <% }); %>
+        </tbody>
+    </table>
+
+
+
+
+
+    <div id="container-buscar" class="container-buscar">
+        <div class="buscar">
+            <div class="option-buscar">
+                <input type="text" id="dato" placeholder="Datos del Medico" />
+                <select name="especialidad" id="especialidad" title="Choose an option" onchange="buscar()"></select>
+            </div>
+            <button>Buscar</button>
+        </div>
+    </div>
+    <p id="message"></p>
+
+
+    <div class="card-medico">
+        <div class="perfil">
+            <img src="/images/juan.jpg" alt="Dr. Juan Perez" class="card-img" />
+            <h3>INFORMACIÓN DEL CONTACTO</h3>
+            <div class="datos">Nombre: Juan</div>
+            <div class="datos">Apellido: Pérez</div>
+            <div class="datos">Correo: juanito@gmail.com</div>
+            <div class="datos">Teléfono: 72732323</div>
+            <div class="datos">Addres: Calle Brazil N# 231.</div>
+        </div>
+        <div class="informacion">
+            <h2>Dr. Juan Perez</h2>
+            <h3>Universidad de USFX.</h3>
+            <div class="datos-info">De educación católica Jesuita realizó sus estudios primarios y secundarios en la
+                escuela y colegio Cristo Rey de la ciudad de Portoviejo.</div>
+            <h3>Especialidad</h3>
+            <div class="datos-info"><strong>Salud mental</strong></div>
+            <div class="datos-info">
+                Excelente profesional, médico de calidad altamente preparado, y sobre todas las cosas
+                un excelente ser humano y amigo. El mejor de los mejores, gracias por su soporte en el
+                tratamiento de mis amigos y familiares recomendados. Sus consultas y recomendaciones son
+                siempre acertadas y puntuales.
+            </div>
+            <a href="#">Mas Inf.</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  background-image: url("../images/login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  margin: 0; /* Elimina el margen por defecto del body */
+}
+
+.login {
+  /* background: url(https://i0.wp.com/lamediatitular.com/wp-content/uploads/2023/01/villarreal-cf-v-real-madrid-cf-laliga-santander.jpg?fit=7398%2C4932&ssl=1); */
+  /* background: linear-gradient(#13cfb0, #c9e3e8, #2ae330); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8rem;
+}
+
+.login h2{
+  font-size: 2.5rem;
+  color: white;
+}
+
+.container::before,
+.container::after {
+  display: table;
+  content: "";
+}
+
+.container::after {
+  clear: both;
+}
+
+.login-form {
+  margin-top: 0px;
+  position: relative;
+  border: 1px solid #ddd;
+  background: linear-gradient(to right, #015ff5, #449af0, #6fbfee);
+  max-width: 500px;
+  padding: 0;
+  border-radius: 0.5rem;
+}
+
+.login-form #owl-login {
+  width: 116px;
+  height: 92px;
+  background-image: url(https://cdn.readme.io/public/img/login/face.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -82px;
+  left: 50%;
+  margin-left: -64px;
+}
+
+.login-form #owl-login .arm-up-right {
+  background-image: url(https://cdn.readme.io/public/img/login/arm-up-right.png);
+  width: 51px;
+  height: 41px;
+  position: absolute;
+  bottom: 11px;
+  right: 5px;
+  transform: translateX(57px) scale(0.8);
+  transform-origin: 0 40px;
+  transition: background-position 0.3s ease-out, transform 0.3s ease-out, opacity 0s linear 0.3s;
+  background-position: 0 25px;
+  background-repeat: no-repeat;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.login-form #owl-login .arm-up-left {
+  background-image: url(https://cdn.readme.io/public/img/login/arm-up-left.png);
+  width: 51px;
+  height: 41px;
+  position: absolute;
+  bottom: 11px;
+  left: -3px;
+  transform: translateX(-34px) scale(0.8);
+  transform-origin: 0 40px;
+  transition: background-position 0.3s ease-out, transform 0.3s ease-out, opacity 0s linear 0.3s;
+  background-position: 0 25px;
+  background-repeat: no-repeat;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.login-form #owl-login .arm-down-left {
+  background-image: url(https://cdn.readme.io/public/img/login/arm-down-left.png);
+  width: 43px;
+  height: 25px;
+  position: absolute;
+  bottom: 2px;
+  left: -34px;
+  transition: 0.3s ease-out;
+}
+
+.login-form #owl-login .arm-down-right {
+  background-image: url(https://cdn.readme.io/public/img/login/arm-down-right.png);
+  width: 43px;
+  height: 25px;
+  position: absolute;
+  bottom: 2px;
+  right: -40px;
+  transition: 0.3s ease-out;
+}
+
+.login-form .pad {
+  overflow: hidden;
+  padding: 30px;
+}
+
+.login-form .pad .controls {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  position: absolute;
+  top: 17px;
+  left: 13px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.login-form input {
+  padding: 16px 6px 12px 40px;
+  width: 100%;
+  border-radius: 0.2rem;
+  border: 1px solid #1e1b1b;
+  background: transparent;
+  font-size: 1rem;
+}
+
+.login-form input::-moz-placeholder {
+  color: rgb(33, 32, 32);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.login-form input::placeholder {
+  color: rgb(33, 32, 32);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.login-form input:hover {
+  transform: translate(3px, -3px);
+  transition: 0.3s;
+}
+
+.login-form .form-actions {
+  border-top: 1px solid #e4e4e4;
+  background-color: #f7f7f7;
+  padding: 18px;
+  width: 100%;
+}
+
+.login-form .form-actions a {
+  text-decoration: none;
+  color: #747070;
+  font-size: 1rem;
+  font-family: sans-serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.login-form .form-actions a:hover {
+  color: #015ff5;
+}
+
+.login-form .form-actions #btn2 {
+  margin-left: 30px;
+}
+
+.login-form .form-actions button {
+  margin-left: 15px;
+  padding: 9px;
+  font-size: 0.9rem;
+  width: 4.3rem;
+  border-radius: 0.4rem;
+  border-color: #018ef5;
+  color: blue;
+  background: #e4f0f9;
+}
+
+.login-form .form-actions button:hover {
+  background: linear-gradient(to right, #449af0, #3d53e4);
+  color: #fff;
+  transform: translateY(-3px);
+  transition: 0.3s;
+  box-shadow: -3px 3px 8px #8cddea;
+}
+
+#owl-login.active .arm-down-left {
+  transform: translateX(40px) scale(0) translateY(-10px);
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+#owl-login.active .arm-down-right {
+  transform: translateX(-32px) scale(0) translateY(-10px);
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+#owl-login.active .arm-up-left {
+  transform: scale(1);
+  background-position: 0 0;
+  opacity: 1;
+  filter: none;
+  transition: background-position 0.3s ease-out, transform 0.3s ease-out;
+}
+
+#owl-login.active .arm-up-right {
+  transform: scale(1);
+  background-position: 0 0;
+  opacity: 1;
+  filter: none;
+  transition: background-position 0.3s ease-out, transform 0.3s ease-out;
+}

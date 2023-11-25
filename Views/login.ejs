@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Agrega el enlace para Font Awesome Para los iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/Utils/login.css">
+    <script src=""></script>
+</head>
+
+<body>
+
+    <div class="login">
+
+        <h2>MEDI-CONNECT</h2>
+        <form class="container login-form">
+            <div id="owl-login">
+                <div class="eyes"></div>
+                <div class="arm-up-right"></div>
+                <div class="arm-up-left"></div>
+                <div class="arm-down-left"></div>
+                <div class="arm-down-right"></div>
+            </div>
+
+            <div class="pad">
+                <div class="control-group">
+                    <div class="controls">
+                        <label for="email" class="control-label fa-solid fa-envelope fa-fade"></label>
+                        <input id="email" class="form-control" type="email" name="email" placeholder="Email"
+                            autocomplete="off" required/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <label for="password" class="control-label fa-solid fa-lock fa-fade"></i></label>
+                        <input id="password" type="password" name="password" placeholder="Password" required
+                            autocomplete="off" class="form-control" aria-required="true"
+                            onkeydown="if(event.heyCode == 13){Iniciar_secion();}"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <a href="#" id="btn1" class="btn pull-left btn-link text-muted">¿Olvidadó tu contraseña?</a>
+                <a href="#" id="btn2" class="btn btn-link text-muted">Sign Up</a>
+                <button type="submit" class="btn btn-primary" onclick="Iniciar_secion();">Log In</button>
+                <button type="reset" class="btn btn-primary" value="Limpiar">Limpiar</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script>
+        //funcionamiento 
+        const owl_login = document.getElementById("owl-login");
+        const password_input = document.getElementById("password");
+
+        //funcion que al completar la contraseña el buho actue, creando una clase active
+        password_input.addEventListener("focus", () => {
+            owl_login.classList.add("active");
+        });
+
+        password_input.addEventListener("focusout", () => {
+            owl_login.classList.remove("active");
+        });
+
+    </script>
+
+</body>
+
+</html>

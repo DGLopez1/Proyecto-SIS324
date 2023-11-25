@@ -1,0 +1,232 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #83adff;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  align-items: center;
+}
+.header .home img {
+  width: 50px;
+  height: 50px;
+}
+.header .medi-conect {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 15px;
+  height: 100%;
+}
+.header .medi-conect img {
+  width: 50px;
+  height: 50px;
+}
+.header .medi-conect h2 {
+  color: white;
+  text-decoration: none;
+}
+.header .autentication a {
+  color: white;
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.header .autentication a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+}
+.main .menu {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 100vh;
+  background: rgb(55, 0, 255);
+  padding: 10px;
+  align-items: center;
+  gap: 20px;
+}
+.main .menu .logo img {
+  margin-top: 15px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.main .menu .navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 10px;
+}
+.main .menu .navigation a {
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  background: rgb(40, 176, 225);
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+.main .menu .navigation a:hover {
+  background: rgb(0, 255, 255);
+}
+.main .contenido {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  width: 80%;
+}
+.main .contenido .introduccion {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+.main .contenido .introduccion h2 {
+  text-align: center;
+  color: blue;
+}
+.main .contenido .introduccion p {
+  font-size: 1.1rem;
+}
+.main .contenido .introduccion ol li a {
+  color: rgb(4, 151, 225);
+  text-decoration: none;
+}
+.main .contenido .introduccion ol li a:hover {
+  text-decoration: underline;
+}
+.main .contenido .introduccion .footer {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.main .contenido .container-medicos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.main .contenido .container-medicos .container-buscar {
+  background-color: rgb(221, 240, 253);
+  padding: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 4px;
+}
+.main .contenido .container-medicos .container-buscar .buscar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .contenido .container-medicos .container-buscar .buscar .option-buscar {
+  display: flex;
+  margin-right: 10px;
+}
+.main .contenido .container-medicos .container-buscar .buscar .option-buscar #dato {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 200px;
+}
+.main .contenido .container-medicos .container-buscar .buscar .option-buscar select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  cursor: pointer;
+}
+.main .contenido .container-medicos .container-buscar .buscar button {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.main .contenido .container-medicos .container-buscar .buscar button:hover {
+  background-color: #27ae60;
+}
+@media only screen and (max-width: 600px) {
+  .main .contenido .container-medicos .container-buscar .buscar {
+    flex-direction: column;
+  }
+  .main .contenido .container-medicos .container-buscar #dato, .main .contenido .container-medicos .container-buscar select, .main .contenido .container-medicos .container-buscar button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+.main .contenido .container-medicos .card-medico {
+  display: flex;
+  width: 80%;
+  margin-top: 40px;
+  height: 80%;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5647058824);
+  border-radius: 10px;
+  box-shadow: -10px 5px 15px -8px black;
+}
+.main .contenido .container-medicos .card-medico img {
+  width: 250px;
+  border-radius: 50%;
+}
+.main .contenido .container-medicos .card-medico .perfil {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 8px;
+}
+.main .contenido .container-medicos .card-medico .perfil .datos {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-left: 10px;
+}
+.main .contenido .container-medicos .card-medico .perfil h3 {
+  color: red;
+  font-size: 1.2rem;
+}
+.main .contenido .container-medicos .card-medico .informacion {
+  display: flex;
+  flex-direction: column;
+}
+.main .contenido .container-medicos .card-medico .informacion h2 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+.main .contenido .container-medicos .card-medico .informacion h3 {
+  font-size: 1.3rem;
+  color: blue;
+}
+.main .contenido .container-medicos .card-medico .informacion .datos-info {
+  font-size: 1.2rem;
+}
+.main .contenido .container-medicos .card-medico .informacion a {
+  margin-top: 10px;
+  background: orangered;
+  width: 70px;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.main .contenido .container-medicos .card-medico .informacion a:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=styles.css.map */
