@@ -1,0 +1,28 @@
+<% listaMedicos.forEach(medicos => { %>
+
+    <div class="card-medico">
+        <div class="perfil">
+            <img src="/images/<%= medicos.fotografia %>" alt="Dr. Juan Perez" class="card-img" />
+            <h3>INFORMACIÓN DEL CONTACTO</h3>
+            <div class="datos">Nombre: <%= medicos.nombre %></div>
+            <div class="datos">Apellido: <%= medicos.apellido %></div>
+            <div class="datos">Correo: <%= medicos.email %></div>
+            <div class="datos">Teléfono: <%= medicos.telefono %></div>
+            <div class="datos">Addres: <%= medicos.direccion %></div>
+        </div>
+        <div class="informacion">
+            <h2>Dr. <%= medicos.nombre %> <%= medicos.apellido %> </h2>
+            <h3><%= medicos.educacion %></h3>
+            <div class="datos-info"><%= medicos.descripcion %></div>
+            <h3>Especialidad</h3>
+            <div class="datos-info"><strong><%= medicos.nombre_especialidad %></strong></div>
+            <div class="datos-info">
+                Excelente profesional, médico de calidad altamente preparado, y sobre todas las cosas
+                un excelente ser humano y amigo. El mejor de los mejores, gracias por su soporte en el
+                tratamiento de mis amigos y familiares recomendados. Sus consultas y recomendaciones son
+                siempre acertadas y puntuales.
+            </div>
+            <a href="#">Mas Inf.</a>
+        </div>
+    </div>
+<% }); %>

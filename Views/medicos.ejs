@@ -3,13 +3,12 @@
 
 
     <div id="container-buscar" class="container-buscar">
-        <div class="buscar">
+        <form class="buscar" action="javascript:cargarMedico()" method="get" id="buscar">
             <div class="option-buscar">
-                <input type="text" id="dato" placeholder="Datos del Medico" />
-                <select name="especialidad" id="especialidad" title="Choose an option" onchange="buscar()"></select>
+                <input type="text" id="dato" name="dato" placeholder="Datos del Medico" />
             </div>
-            <button>Buscar</button>
-        </div>
+            <button type="submit">Buscar</button>
+        </form>
     </div>
     <p id="message"></p>
 
