@@ -20,5 +20,4 @@ Database.connect((error) =>{
 
 });
 
-
 module.exports = Database;
