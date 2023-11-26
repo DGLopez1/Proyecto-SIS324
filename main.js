@@ -8,6 +8,10 @@ function cargarContenido(content) {
         .catch(error => console.error('Error:', error));
 }
 
+function cargarMedicos() {
+    cargarContenido('/medicos');
+}
+
 function abrirLogin() {
     // Abre la ruta /Views/login definida en router.js en una nueva ventana
     window.open('/Views/login', '_blank');
