@@ -1,3 +1,7 @@
+// Invocamos  a dotenv para guadar variable de entorno - Login
+const dotenv = require('dotenv').config({ path: './env/.env' });
+// require('dotenv').config({ path: './env/.env' });
+
 const express = require("express");
 const app = express();
 app.use('/', require('./router'));
@@ -9,15 +13,13 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));  // para capturar los datos del formulario
 app.use(express(express.json));
 
-// Invocamos  a dotenv para guadar variable de entorno - Login
-const dotenv = require('dotenv');
-dotenv.config({path: './env/.env'});
 
 // Directorio public  - para utilizar los archivos estáticos
 app.use('/resources', express.static('Public'));
 app.use(express.static(__dirname + '/Public'));
 app.use(express.static(__dirname + '/Views'));
 app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/env'));
 
 // Invocamos a bcryptjs
 const bcryptjs = require('bcryptjs');
