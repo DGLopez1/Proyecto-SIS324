@@ -6,14 +6,32 @@ app.use('/', require('./router'));
 // Motor de plantilla
 app.set('view engine', 'ejs');
 
-// app.use(express.static('Public'));
-// app.use(express.static('Views'));
 app.use(express.urlencoded({extended: false}));  // para capturar los datos del formulario
 app.use(express(express.json));
 
+// Invocamos  a dotenv para guadar variable de entorno - Login
+const dotenv = require('dotenv');
+dotenv.config({path: './env/.env'});
+
+// Directorio public  - para utilizar los archivos estáticos
+app.use('/resources', express.static('Public'));
 app.use(express.static(__dirname + '/Public'));
 app.use(express.static(__dirname + '/Views'));
 app.use(express.static(__dirname + '/'));
+
+// Invocamos a bcryptjs
+const bcryptjs = require('bcryptjs');
+
+// Para las variables de session
+const session = require('express-session');
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Invocamos al modulo de conexion de la DB
+const Database = require('./Database/db');
 
 app.listen(5000, () => {
   console.log("Servidor respondiendo en https://localhost:5000");
