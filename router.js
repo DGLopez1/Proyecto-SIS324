@@ -39,6 +39,9 @@ router.get('/auth', async (req, res)=>{
     var password = req.query.password;
     // let passwordHaash = await bcryptjs.hash(password, 8); // Incriptada
 
+    console.log(email);
+    console.log(password);
+
 
     if(email && password){
 
@@ -51,11 +54,15 @@ router.get('/auth', async (req, res)=>{
                 if(results > 0){
                     // res.render('/Views/controllers', { user: results[0] });
                     // res.render('/Views/controllers');
-                    window.open('/Views/controllers');
+                    // window.open('/Views/controllers');
+                    // res.redirect('/Views/controllers');
+                    // req.session.user = results[0];
+                    res.redirect('/Views/controllers');
                 }else{
                     // res.render('login', { error: 'Credenciales incorrectas' });
-                    window.open('/Views/login', {error: 'Credenciales Incorrectas'});
+                    // window.open('/Views/login', {error: 'Credenciales Incorrectas'});
                     // alert('Credenciales Incorrectas');
+                    res.render('login');
                 }
             }
         });
@@ -109,6 +116,11 @@ router.get('/auth', async (req, res)=>{
     //     });
     // }
 });
+
+
+
+
+
 
 
 //? PARA MOSTRAR MEDICOS
