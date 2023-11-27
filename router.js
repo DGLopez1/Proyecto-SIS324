@@ -32,11 +32,14 @@ router.get('/Views/register', (req, res)=>{
 });
 
 
-//? AUTENTICATION
-router.get('/auth', async (req, res)=>{
 
-    var email = req.query.email;
-    var password = req.query.password;
+
+
+//? AUTENTICATION
+router.post('/auth', async (req, res)=>{
+
+    var email = req.body.email;
+    var password = req.body.password;
     // let passwordHaash = await bcryptjs.hash(password, 8); // Incriptada
 
     console.log(email);
@@ -52,16 +55,11 @@ router.get('/auth', async (req, res)=>{
                 res.render('error', { message: 'Error en la consulta a la base de datos' });
             }else{
                 if(results > 0){
-                    // res.render('/Views/controllers', { user: results[0] });
                     // res.render('/Views/controllers');
                     // window.open('/Views/controllers');
-                    // res.redirect('/Views/controllers');
-                    // req.session.user = results[0];
                     res.redirect('/Views/controllers');
                 }else{
-                    // res.render('login', { error: 'Credenciales incorrectas' });
                     // window.open('/Views/login', {error: 'Credenciales Incorrectas'});
-                    // alert('Credenciales Incorrectas');
                     res.render('login');
                 }
             }
@@ -69,52 +67,6 @@ router.get('/auth', async (req, res)=>{
     }else {
         res.render('login', { error: 'Por favor, ingrese correo y contraseña' });
     }
-
-
-    // if(email && password){
-
-    //     var sql = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
-    //     Database.query(sql, [email, passwordHaash], async (error, results)=>{
-
-    //         if(results.length == 0 || !(await bcryptjs.compare(password, results[0].password))){
-    //             // res.render('login', {error: true});
-    //             // res.send('CREDENCIALES INCORRECTAS');
-    //             res.render('login',{
-    //                 alert: true,
-    //                 alertTitle: "Error",
-    //                 alertMessage: "Credenciales incorrectas",
-    //                 alertIcon: "error",
-    //                 showConfirmButton: true,
-    //                 timer: false,
-    //                 ruta: "login"
-    //             });
-    //         }else{
-    //             // res.render('login', {error: false});
-    //             // res.send('CREDENCIALES CORRECTAS');
-    //             req.session.nombre = results[0].nombre;
-    //             res.render('login',{
-    //                 alert: true,
-    //                 alertTitle: "Exito",
-    //                 alertMessage: "Credenciales correctas",
-    //                 alertIcon: "success",
-    //                 showConfirmButton: true,
-    //                 timer: false,
-    //                 ruta: ""
-    //             });
-    //         }
-    //     });
-    // }else{
-    //     // res.send('Por favor ingrese un password');
-    //     res.render('login',{
-    //         alert: true,
-    //         alertTitle: "Advertencia",
-    //         alertMessage: "Por favor ingrese un password",
-    //         alertIcon: "warning",
-    //         showConfirmButton: true,
-    //         timer: false,
-    //         ruta: "login"
-    //     });
-    // }
 });
 
 

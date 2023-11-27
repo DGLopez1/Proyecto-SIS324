@@ -10,7 +10,8 @@ app.use('/', require('./router'));
 // Motor de plantilla
 app.set('view engine', 'ejs');
 
-app.use(express.urlencoded({extended: false}));  // para capturar los datos del formulario
+app.use(express.urlencoded({ extended: false }));
+
 app.use(express(express.json));
 
 
