@@ -3,24 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestión de Especialidades</title>
     <script src="/main.js"></script>
 </head>
 <body>
-    <h3><%= gEspecialidades %><h3/>
+  <h3><%= gEspecialidades %></h3>
     <header class="header2">
-        <button class="button" onclick="mostrar_formUsuario()">
-          Agregar Especialidad
+        <button class="button" onclick="mostrar_formEspecialidad()">
+            Agregar Especialidad
         </button>
         <div class="buscar">
-          <label for="dato">Buscar</label>
-          <input type="text" id="dato" />
-          <button class="button" onclick="buscar_usuario()">Buscar</button>
+            <label for="dato">Buscar</label>
+            <input type="text" id="dato" />
+            <button class="button" onclick="buscar_especialidad()">Buscar</button>
         </div>
-      </header>
-      <button class="volverAtras"  onclick="volverAtras()">Volver Atras</button>
-      <div id="container">
+    </header>
+    <button class="volverAtras" onclick="volverAtras()">Volver Atras</button>
 
-      </div>
+    <div id="container">
+        <div id="tabla_especialidades">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% listaEspecialidades.forEach(function(especialidad) { %>
+                        <tr>
+                            <td><%= especialidad.id %></td>
+                            <td><%= especialidad.nombre %></td>
+                            <td><%= especialidad.descripcion %></td>
+                            <td>
+                                <button data-action="editar" onclick="formEditEspecialidad('<%= especialidad.id %>');">Editar</button>
+                                <button data-action="eliminar" onclick="controlEspecialidad.eliminar_especialidad('<%= especialidad.id %>'); armar_tabla_especialidades(listaEspecialidades)">Eliminar</button>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>

@@ -36,9 +36,9 @@ router.get('/', (req, res) =>{
 //     res.render('gestionUsuarios', {gUsuarios : 'Gestionar Usuarios' });
 // });
 
-router.get('/Views/gestionEspecialidades', (req, res) => {
-    res.render('gestionEspecialidades', {gEspecialidades : 'Gestionar Especialidades' });
-});
+// router.get('/Views/gestionEspecialidades', (req, res) => {
+//     res.render('gestionEspecialidades', {gEspecialidades : 'Gestionar Especialidades' });
+// });
 
 
 router.get('/Views/register', (req, res)=>{
@@ -91,6 +91,15 @@ router.get('/Views/gestionUsuarios', (req, res) => {
     });
 });
 
+router.get('/Views/gestionEspecialidades', (req, res) => {
+    Database.query('SELECT * FROM especialidad', (error, result) => {
+        if (result.length > 0) {
+            res.render('gestionEspecialidades', { listaEspecialidades: result, gEspecialidades: 'Gestionar Especialidades' });
+        } else {
+            res.render('gestionEspecialidades', { listaEspecialidades: [], gEspecialidades: 'Gestionar Especialidades' });
+        }
+    });
+});
 
 //? PARA MOSTRAR MEDICOS
 router.get('/medicos', (req, res) =>{

@@ -30,7 +30,6 @@ function abrirLogin() {
 
 function cargarGestionMedicos() {
     cargarContenido('/Views/gestionMedicos');
-    mostrarListaMedicos();
 }
 
 function cargarGestionUsuarios() {
