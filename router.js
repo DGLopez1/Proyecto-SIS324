@@ -46,6 +46,7 @@ router.get('/Views/register', (req, res)=>{
 });
 
 
+//? PARA EL LOGIN 
 router.post('/Views/controllers', (req, res) =>{
     var email = req.body.email;
     var password = req.body.password;
@@ -71,6 +72,8 @@ router.post('/Views/controllers', (req, res) =>{
     }
 })
 
+
+//? PARA LISTA DE MEDICOS
 router.get('/Views/gestionMedicos', (req, res) => {
     Database.query('SELECT * FROM medicos', (error, result) => {
         if (result.length > 0) {
@@ -81,6 +84,8 @@ router.get('/Views/gestionMedicos', (req, res) => {
     });
 });
 
+
+//? PARA LISTA DE USUARIOS
 router.get('/Views/gestionUsuarios', (req, res) => {
     Database.query('SELECT * FROM usuarios', (error, result) => {
         if (result.length > 0) {
@@ -91,6 +96,8 @@ router.get('/Views/gestionUsuarios', (req, res) => {
     });
 });
 
+
+//? PARA LISTA DE ESPECIALIDADES
 router.get('/Views/gestionEspecialidades', (req, res) => {
     Database.query('SELECT * FROM especialidad', (error, result) => {
         if (result.length > 0) {
@@ -101,7 +108,10 @@ router.get('/Views/gestionEspecialidades', (req, res) => {
     });
 });
 
-//? PARA MOSTRAR MEDICOS
+
+
+
+//? PARA MOSTRAR LA BUSQUEDA DE LOS MEDICOS
 router.get('/medicos', (req, res) =>{
    var datos = req.query.dato;
 //    var id = parseInt(datos);

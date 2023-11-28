@@ -38,8 +38,8 @@
                             <td><%= especialidad.nombre %></td>
                             <td><%= especialidad.descripcion %></td>
                             <td>
-                                <button data-action="editar" onclick="javascript:formEditEspecialidad('<%= especialidad.id %>');">Editar</button>
-                                <button data-action="eliminar" onclick="javascript:eliminarEspecialidad('<%= especialidad.id %>');">Eliminar</button>
+                                <button class="editar" onclick="javascript:formEditEspecialidad('<%= especialidad.id %>');">Editar</button>
+                                <button class="eliminar" onclick="javascript:eliminarEspecialidad('<%= especialidad.id %>');">Eliminar</button>
                             </td>
                         </tr>
                     <% }); %>

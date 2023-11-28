@@ -238,3 +238,56 @@ img{
 /* #photo-perfil{
   width: 120px;
 } */
+
+
+
+
+
+
+/* STYLES PARA LISTA DE ESPECIALIDADES */
+#tabla_especialidades table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tabla_especialidades th,
+#tabla_especialidades td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#tabla_especialidades th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+#tabla_especialidades tr:hover {
+  background-color: #ddd;
+}
+
+#tabla_especialidades .editar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  margin: 2px 2px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+#tabla_especialidades .eliminar {
+  background-color: rgb(250, 26, 26);
+  color: white;
+  padding: 5px 10px;
+  margin: 2px 2px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+#tabla_especialidades button:hover {
+  /* background-color: #45a049; */
+  transition: 0.25s;
+  transform: scale(1.1);
+}
