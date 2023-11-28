@@ -90,7 +90,7 @@ router.post('/Views/login', (req, res) =>{
                   } );
             }else{
                // req.session.cuenta= result[0].cuenta;
-                res.render('gestion', {auth: '"Bienbenido   '+result[0].cuenta+'"' });
+                res.render('controllers', {auth: '"Bienbenido   '+result[0].cuenta+'"' });
             }
         })
     }else{
