@@ -171,7 +171,9 @@ body {
   .main .contenido .container-medicos .container-buscar .buscar {
     flex-direction: column;
   }
-  .main .contenido .container-medicos .container-buscar #dato, .main .contenido .container-medicos .container-buscar select, .main .contenido .container-medicos .container-buscar button {
+  .main .contenido .container-medicos .container-buscar #dato,
+  .main .contenido .container-medicos .container-buscar select,
+  .main .contenido .container-medicos .container-buscar button {
     width: 100%;
     margin-bottom: 10px;
   }
@@ -232,4 +234,82 @@ body {
 }
 .main .contenido .container-medicos .card-medico .informacion a:hover {
   text-decoration: underline;
+}
+.main .contenido .sevicices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-y: auto;
+}
+.main .contenido .sevicices h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #007BFF;
+}
+.main .contenido .sevicices .container-servicios {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+}
+.main .contenido .sevicices .container-servicios .servicios-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+.main .contenido .sevicices .container-servicios .servicios-list .servicio-item {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+.main .contenido .sevicices .container-servicios .servicios-list .servicio-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.main .contenido .sevicices .container-servicios .servicios-list .servicio-item h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.main .contenido .sevicices .container-servicios .servicios-list .servicio-item p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.main .contenido .sevicices .container-servicios .servicios-list .servicio-item a {
+  display: inline-block;
+  background-color: #007BFF;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.main .contenido .sevicices .container-servicios .servicios-list .servicio-item a:hover {
+  background-color: #0056b3;
+}
+.main .contenido .sevicices .container-servicios .tarifas, .main .contenido .sevicices .container-servicios .testimonios {
+  width: 100%;
+  max-width: 500px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.main .contenido .sevicices .container-servicios .tarifas a, .main .contenido .sevicices .container-servicios .testimonios a {
+  display: inline-block;
+  background-color: #007BFF;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.main .contenido .sevicices .container-servicios .tarifas a:hover, .main .contenido .sevicices .container-servicios .testimonios a:hover {
+  background-color: #0056b3;
 }/*# sourceMappingURL=styles.css.map */

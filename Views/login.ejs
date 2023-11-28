@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 
     <!-- Agrega el enlace para Font Awesome Para los iconos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -30,17 +30,14 @@
                 <div class="control-group">
                     <div class="controls">
                         <label for="email" class="control-label fa-solid fa-envelope fa-fade"></label>
-                        <input id="email" class="form-control" type="email" name="email" placeholder="Email"
-                            autocomplete="off" required/>
+                        <input id="email" class="form-control" type="email" name="email" placeholder="Email" required/>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <div class="controls">
                         <label for="password" class="control-label fa-solid fa-lock fa-fade"></i></label>
-                        <input id="password" type="password" name="password" placeholder="Password" required
-                            autocomplete="off" class="form-control" aria-required="true"
-                            onkeydown="if(event.heyCode == 13){Iniciar_secion();}"/>
+                        <input id="password" type="password" name="password" placeholder="Password" required class="form-control"/>
                     </div>
                 </div>
             </div>
@@ -53,9 +50,26 @@
                 <button type="reset" class="btn btn-primary" value="Limpiar">Limpiar</button>
             </div>
         </form>
+        <a href="register" class="btn_register">Registrarse</a>
+
+       
     </div>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                text: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: '<%= showConfirmButton %>',
+                timer: '<%= timer %>'
+            }).then(()=>{
+                window.location = '/<%= ruta %>';
+            })
+        </script>
+    <% } %>
 
     <script>
         //funcionamiento 

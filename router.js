@@ -5,6 +5,17 @@ const router = express.Router();
 const Database = require('./Database/db');
 
 
+// Invocamos a bcryptjs
+const bcryptjs = require('bcryptjs');
+
+const session = require('express-session');
+router.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
+
 //? ROUTE FOR HOME PAGE
 router.get('/', (req, res) =>{
 
@@ -15,6 +26,52 @@ router.get('/', (req, res) =>{
 router.get('/Views/login', (req, res) => {
     res.render('login',{error: ''} );
 });
+
+router.get('/Views/register', (req, res)=>{
+    res.render('register');
+});
+
+
+
+
+
+//? AUTENTICATION
+router.post('/auth', async (req, res)=>{
+
+    var email = req.body.email;
+    var password = req.body.password;
+    // let passwordHaash = await bcryptjs.hash(password, 8); // Incriptada
+
+    console.log(email);
+    console.log(password);
+
+
+    if(email && password){
+
+        var sql = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
+
+        Database.query(sql, [email, password], async (error, results)=>{
+            if(error){
+                res.render('error', { message: 'Error en la consulta a la base de datos' });
+            }else{
+                if(results > 0){
+                    // res.render('/Views/controllers');
+                    // window.open('/Views/controllers');
+                    res.redirect('/Views/controllers');
+                }else{
+                    // window.open('/Views/login', {error: 'Credenciales Incorrectas'});
+                    res.render('login');
+                }
+            }
+        });
+    }else {
+        res.render('login', { error: 'Por favor, ingrese correo y contraseña' });
+    }
+});
+
+
+
+
 
 router.post('/Views/login', (req, res) =>{
     var email = req.body.email;
