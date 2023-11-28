@@ -73,7 +73,7 @@ router.post('/auth', async (req, res)=>{
 
 
 
-router.post('/Views/login', (req, res) =>{
+router.post('/Views/controllers', (req, res) =>{
     var email = req.body.email;
     var password = req.body.password;
     if(email && password){
@@ -90,7 +90,7 @@ router.post('/Views/login', (req, res) =>{
                   } );
             }else{
                // req.session.cuenta= result[0].cuenta;
-                res.render('controllers', {auth: '"Bienbenido   '+result[0].cuenta+'"' });
+                res.render('controllers', {auth: '"Bienvenido   '+result[0].cuenta+'"' });
             }
         })
     }else{
