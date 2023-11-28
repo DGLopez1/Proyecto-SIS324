@@ -44,8 +44,8 @@
                             <td><%= usuario.email %></td>
                             <td><%= usuario.rol %></td>
                             <td>
-                                <button data-action="editar" onclick="formEditUsuario('<%= usuario.id %>');">Editar</button>
-                                <button data-action="eliminar" onclick="controlUsuario.eliminar_Usuario('<%= usuario.id %>'); armar_tabla_usuarios(lista_usuarios)">Eliminar</button>
+                                <button data-action="editar" onclick="javascript:formEditUsuario('<%= usuario.id %>');">Editar</button>
+                                <button data-action="eliminar" onclick="javascript:eliminarUsuario('<%= usuario.id %>');">Eliminar</button>
                             </td>
                         </tr>
                     <% }); %>
