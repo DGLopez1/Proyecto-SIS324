@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/medicos.css" />
+    <title>Document</title>
+    <script src="../class/medico.js"></script>
+    <!-- <script src="../class/controlMedico.js"></script> -->
+    <script src="../class/especialidad.js"></script>
+  </head>
+
+  <body>
+    <nav class="navigation">
+      <div class="logo items-nav">
+        <img
+          src="../icons/house-solid.svg"
+          alt="House icon"
+          width="80px"
+          height="50px"
+        />
+      </div>
+      <div class="items-nav medio">
+        <div>
+          <img
+            src="../icons/truck-medical-solid.svg"
+            alt=""
+            width="80px"
+            height="50px"
+          />
+        </div>
+        <div>MEDI-CONECT</div>
+      </div>
+      <div class="items-nav login">
+        <h3 class="item-login" onclick="location.href='inicio.html'">Volver</h3>
+
+      </div>
+    </nav>
+
+    <h2 class="title">Medicos con sus Especialidades</h2>
+
+
+    <div id="container-buscar" class="container-buscar">
+      <!-- <button onclick="card_medicos(lista_Medicos, lista_Especialidad);">Lista de Medicos</button> -->
+       
+      <div class="buscar">
+        <div class="option-buscar">
+          <input type="text" id="dato" placeholder="Datos del Medico" />
+          <select name="especialidad"  id="especialidad" title="Choose an option" onchange="buscar()"></select>
+        </div>
+        <button onclick="buscar_medico(lista_Medicos, lista_Especialidad);">Buscar</button>
+      </div>
+    </div>
+    <p id="message"></p>
+
+    <div class="container" id="container">
+      <!-- Insertar contenido -->
+    </div>
+    
+
+
+    
+
+    <script>
+      var lista_Medicos = controlMedico.obtenerListaMedicos();
+      var lista_Especialidad = controlEspecialidad.obtenerListaEspecialidad();
+      
+      var container = document.getElementById("container");
+      container.innerHTML = "";
+
+      
+          console.log(lista_Especialidad.length);
+
+          for(let i =0; i < lista_Especialidad.length; i++){
+            document.getElementById("especialidad").innerHTML += `<option value="${lista_Especialidad[i].id_espc}">${lista_Especialidad[i].nombreEsp}</option>`;
+          }
+      
+
+      function card_medicos(listaMedicos, listaEspecialidad) {
+
+        // console.log(lista_Especialidad);
+        // console.log(lista_Medicos);
+        var message = document.getElementById("message");
+        message.innerHTML = "";
+        var html = "";
+
+
+        listaMedicos.forEach((medico) => {
+          var id = medico.id_especialidad;
+          console.log(id);
+
+          let nombre_especialidad = '';
+          listaEspecialidad.forEach(especialidad => {
+            if (especialidad.id_espc == id) {
+              nombre_especialidad = especialidad.nombreEsp;
+            }
+          });
+
+          // console.log(nombre_especialidad);
+
+          html += `
+          <div class="card-medico">
+      <div class="perfil">
+        <img src="../images/${medico.foto}" alt="" />
+        <h3>INFORMACIÓN DEL CONTACTO</h3>
+        <p>Nombre: ${medico.nombre}</p>
+        <p>Apellido: ${medico.apellido}</p>
+        <p>Correo: ${medico.email}</p>
+        <p>Teléfono: ${medico.telefono}</p>
+        <p>Addres: ${medico.direccion}</p>
+      </div>
+      <div class="informacion">
+        <h2>Dr. ${medico.nombre} ${medico.apellido}</h2>
+        <h3>${medico.educacion}</h3>
+        <p>
+          ${medico.descripcion}
+        </p>
+        <h3>Especialidad</h3>
+        <p>
+          ${nombre_especialidad}
+        </p>
+        <p>
+          Excelente profesional, médico de calidad altamente preparado, y sobre todas las cosas 
+          un excelente ser humano y amigo. El mejor de los mejores, gracias por su soporte en el 
+          tratamiento de mis amigos y familiares recomendados. Sus consultas y recomendaciones son 
+          siempre acertadas y puntuales.
+        </p>
+        <a href="#">Mas Inf.</a>
+      </div>
+    </div>
+      `;
+        });
+        container.innerHTML = html;
+      }
+
+
+      card_medicos(lista_Medicos, lista_Especialidad);
+
+
+
+
+
+
+
+
+      
+      //  function buscar(lista_Medicos, lista_Especialidad){
+      //   var message = document.getElementById("message");
+
+      //   var select = document.getElementById("especialidad").value;
+      //   console.log("seleccionaste "+select); 
+
+      //   var listMedico = [];
+      //   lista_Medicos.forEach((medico) => {
+
+      //     let nombre_especialidad = '';
+      //     let seleccionado = '';
+      //     // var listMedico = [];
+      //     if(medico.id_especialidad == select){
+      //         listMedico.push(medico);
+      //         // seleccionado = especialidad.nombreEsp;
+      //       }
+      //     lista_Especialidad.forEach(especialidad =>{
+      //       // var listMedico = [];
+      //       seleccionado = especialidad.nombreEsp;
+
+      //       if (especialidad.id_espc == medico.id_especialidad) {
+      //         nombre_especialidad = especialidad.nombreEsp;
+      //       }
+      //     })
+    
+      //     if(seleccionado){
+      //         switch (seleccionado) {
+      //         case nombre_especialidad:
+      //             card_medicos(listMedico, lista_Especialidad);
+      //           break;
+      //       }
+      //     }
+      
+      // });
+      //  }
+
+
+
+
+       function buscar(){
+        var id_especialidad = document.getElementById("especialidad").value;
+
+        let newListaMedicos = [];
+        let newListaEspecialidad = [];
+        newListaEspecialidad.push(id_especialidad);
+
+        lista_Medicos.forEach(function(medico){
+          if(medico.id_especialidad==id_especialidad){
+            newListaMedicos.push(medico);
+          }
+        })
+       card_medicos(newListaMedicos, newListaEspecialidad);
+      }
+
+        
+      
+      function buscar_medico(listaMedicos, listaEspecialidad) {
+
+        var dato_buscar = document.getElementById("dato").value;
+        var message = document.getElementById("message");
+
+
+        // console.log(dato_buscar);
+        var medico_encontrado = false;
+
+        // var listMedico = [];
+        listaMedicos.forEach((medico) => {
+          var id_medico = medico.id.toString();
+
+          let nombre_especialidad = '';
+         
+          listaEspecialidad.forEach(especialidad =>{
+
+            if (especialidad.id_espc == medico.id_especialidad) {
+              nombre_especialidad = especialidad.nombreEsp;
+            }
+          })
+
+          if(dato_buscar){
+              switch (dato_buscar) {
+              case id_medico:
+              case medico.nombre:
+              case medico.apellido:
+              case medico.email:
+              case medico.telefono:
+              case nombre_especialidad:
+                card_medicos([medico], listaEspecialidad);
+                medico_encontrado = true;
+                break;
+            }
+          }
+
+          if (medico_encontrado == true) {
+            message.innerHTML = "";
+          } else {
+            message.innerHTML = "No se encontró ningun medico con el dato introducido";
+            container.innerHTML = "";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+

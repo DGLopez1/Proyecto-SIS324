@@ -195,7 +195,24 @@ body{
   background: #e4f0f9;
 }
 
+.login-form .form-actions input {
+  margin-left: 15px;
+  padding: 9px;
+  font-size: 0.9rem;
+  width: 4.3rem;
+  border-radius: 0.4rem;
+  border-color: #018ef5;
+  color: blue;
+  background: #e4f0f9;
+}
 .login-form .form-actions button:hover {
+  background: linear-gradient(to right, #449af0, #3d53e4);
+  color: #fff;
+  transform: translateY(-3px);
+  transition: 0.3s;
+  box-shadow: -3px 3px 8px #8cddea;
+}
+.login-form .form-actions input:hover {
   background: linear-gradient(to right, #449af0, #3d53e4);
   color: #fff;
   transform: translateY(-3px);

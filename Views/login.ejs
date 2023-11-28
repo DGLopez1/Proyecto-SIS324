@@ -13,11 +13,11 @@
 </head>
 
 <body>
-
+   
     <div class="login">
 
         <h2>MEDI-CONNECT</h2>
-        <form class="container login-form">
+        <form class="container login-form" action="/Views/login" method="POST">
             <div id="owl-login">
                 <div class="eyes"></div>
                 <div class="arm-up-right"></div>
@@ -48,7 +48,8 @@
             <div class="form-actions">
                 <a href="#" id="btn1" class="btn pull-left btn-link text-muted">¿Olvidadó tu contraseña?</a>
                 <a href="#" id="btn2" class="btn btn-link text-muted">Sign Up</a>
-                <button type="submit" class="btn btn-primary" onclick="Iniciar_secion();">Log In</button>
+                <!-- <button type="submit" class="btn btn-primary" onclick="Iniciar_secion();">Log In</button> -->
+                <input type="submit" value="Log In">
                 <button type="reset" class="btn btn-primary" value="Limpiar">Limpiar</button>
             </div>
         </form>
@@ -71,7 +72,20 @@
         });
 
     </script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <% if(typeof alert != "undefined"){ %>
+        <script>
+            Swal.fire({
+                title:'<%= alertTitle %>',
+                text:'<%= alertMessage %>',
+                icon:'<%= alertIcon %>',
+                showConfirmButton:'<%= showConfirmButton %>',
+                timer:'<%= timer %>'
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
 </body>
 
 </html>

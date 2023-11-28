@@ -13,10 +13,33 @@ router.get('/', (req, res) =>{
 
 
 router.get('/Views/login', (req, res) => {
-    res.render('login');
+    res.render('login',{error: ''} );
 });
 
-
+router.post('/Views/login', (req, res) =>{
+    var email = req.body.email;
+    var password = req.body.password;
+    if(email && password){
+        Database.query('SELECT * FROM usuarios WHERE email = ?', [email], (error, result)=>{
+            if(result.length == 0 || result[0].password != password){
+                res.render('login',{
+                    alert: true,
+                    alertTitle: 'Error',
+                    alertMessage: 'Email o contraseña incorrectos',
+                    alertIcon: 'error',
+                    showConfirmButton: true,
+                    timer: 4000,
+                    ruta: 'Views/login'   
+                  } );
+            }else{
+               // req.session.cuenta= result[0].cuenta;
+                res.render('gestion', {auth: '"Bienbenido   '+result[0].cuenta+'"' });
+            }
+        })
+    }else{
+        res.send('Por favor ingrese email y contraseña');
+    }
+})
 
 //? PARA MOSTRAR MEDICOS
 router.get('/medicos', (req, res) =>{
