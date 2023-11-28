@@ -30,10 +30,11 @@ function abrirLogin() {
 
 function cargarGestionMedicos() {
     cargarContenido('/Views/gestionMedicos');
+    mostrarListaMedicos();
 }
 
 function cargarGestionUsuarios() {
-    cargarContenido('/Views/gestionUsurios');
+    cargarContenido('/Views/gestionUsuarios');
 }
 function cargarGestionEspecialidades() {
     cargarContenido('/Views/gestionEspecialidades');
@@ -56,4 +57,6 @@ function volverAtras(){
   </header>
     `
 }
+
+
 

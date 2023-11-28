@@ -8,17 +8,52 @@
 </head>
 <body>
     <h3><%= gUsuarios %><h3/>
-      <header class="header2">
-        <button class="button" onclick="mostrar_formMedico()">
-          Agregar Usuario
+    <header class="header2">
+        <button class="button" onclick="mostrar_formUsuario()">
+          Agregar Usuarios
         </button>
-
         <div class="buscar">
           <label for="dato">Buscar</label>
-          <input type="text" id="dato-medico" />
-          <button class="button" onclick="buscar_medico()">Buscar</button>
+          <input type="text" id="dato" />
+          <button class="button" onclick="buscar_usuario()">Buscar</button>
         </div>
       </header>
-      <button class="volverAtras" onclick="volverAtras()">Volver Atras</button>
+<button class="volverAtras"  onclick="volverAtras()">Volver Atras</button>
+
+      <div id="container">
+        <div id="tabla_usuarios">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Cuenta</th>
+                        <th>Clave</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% listaUsuarios.forEach(function(usuario) { %>
+                        <tr>
+                            <td><%= usuario.id %></td>
+                            <td><%= usuario.nombre %></td>
+                            <td><%= usuario.cuenta %></td>
+                            <td><%= usuario.clave %></td>
+                            <td><%= usuario.email %></td>
+                            <td><%= usuario.rol %></td>
+                            <td>
+                                <button data-action="editar" onclick="formEditUsuario('<%= usuario.id %>');">Editar</button>
+                                <button data-action="eliminar" onclick="controlUsuario.eliminar_Usuario('<%= usuario.id %>'); armar_tabla_usuarios(lista_usuarios)">Eliminar</button>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
 </body>
 </html>

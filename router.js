@@ -23,18 +23,18 @@ router.get('/', (req, res) =>{
 });
 
 
-router.get('/Views/login', (req, res) => {
-    res.render('login',{error: ''} );
-});
+ router.get('/Views/login', (req, res) => {
+     res.render('login',{error: ''} );
+ });
 
-router.get('/Views/gestionMedicos', (req, res) => {
-    res.render('gestionMedicos', {gMedicos: 'Gestionar Medicos' });
-});
+// router.get('/Views/gestionMedicos', (req, res) => {
+//     res.render('gestionMedicos', {gMedicos: 'Gestionar Medicos' });
+// });
 
 
-router.get('/Views/gestionUsurios', (req, res) => {
-    res.render('gestionUsuarios', {gUsuarios : 'Gestionar Usuarios' });
-});
+// router.get('/Views/gestionUsurios', (req, res) => {
+//     res.render('gestionUsuarios', {gUsuarios : 'Gestionar Usuarios' });
+// });
 
 router.get('/Views/gestionEspecialidades', (req, res) => {
     res.render('gestionEspecialidades', {gEspecialidades : 'Gestionar Especialidades' });
@@ -70,6 +70,27 @@ router.post('/Views/controllers', (req, res) =>{
         res.send('Por favor ingrese email y contraseña');
     }
 })
+
+router.get('/Views/gestionMedicos', (req, res) => {
+    Database.query('SELECT * FROM medicos', (error, result) => {
+        if (result.length > 0) {
+            res.render('gestionMedicos', { listaMedicos: result, gMedicos: 'Gestionar Medicos' });
+        } else {
+            res.render('gestionMedicos', { listaMedicos: [], gMedicos: 'Gestionar Medicos' });
+        }
+    });
+});
+
+router.get('/Views/gestionUsuarios', (req, res) => {
+    Database.query('SELECT * FROM usuarios', (error, result) => {
+        if (result.length > 0) {
+            res.render('gestionUsuarios', { listaUsuarios: result, gUsuarios: 'Gestionar Usuarios' });
+        } else {
+            res.render('gestionUsuarios', { listaUsuarios: [], gUsuarios: 'Gestionar Usuarios' });
+        }
+    });
+});
+
 
 //? PARA MOSTRAR MEDICOS
 router.get('/medicos', (req, res) =>{
