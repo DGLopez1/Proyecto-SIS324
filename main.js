@@ -28,3 +28,32 @@ function abrirLogin() {
     window.open('/Views/login', '_blank');
 }
 
+function cargarGestionMedicos() {
+    cargarContenido('/Views/gestionMedicos');
+}
+
+function cargarGestionUsuarios() {
+    cargarContenido('/Views/gestionUsurios');
+}
+function cargarGestionEspecialidades() {
+    cargarContenido('/Views/gestionEspecialidades');
+}
+
+function volverAtras(){
+    var contenido = document.getElementById('contenido');
+    contenido.innerHTML= `
+    <h3>Administrador</h3>
+    <header class="header" id="header">
+    <button class="button" onclick="javascript:cargarGestionUsuarios()">
+      Gestion de Usuarios
+    </button>
+    <button class="button" onclick="javascript:cargarGestionMedicos()">
+      Gestion de Medicos
+    </button>
+    <button class="button" onclick="javascript:cargarGestionEspecialidades()">
+      Gestion de Especialidad
+    </button>
+  </header>
+    `
+}
+

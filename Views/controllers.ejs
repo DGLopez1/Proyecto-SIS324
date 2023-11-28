@@ -1,7 +1,30 @@
-
-    <h1><%= auth %></h1>
-<div class="container-control">
-
-    <a href=""></a>
-
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Utils/controllers.css">
+    <script src="/main.js"></script>
+</head>
+<body>
+    <div class="contenido" id="contenido">
+        
+        <div class="datos">
+        <h3 style="text-align: center;"><%= auth %><h3/>
+        </div>
+        <header class="header" id="header">
+          <button class="button" onclick="javascript:cargarGestionUsuarios()">
+            Gestion de Usuarios
+          </button>
+          <button class="button" onclick="javascript:cargarGestionMedicos()">
+            Gestion de Medicos
+          </button>
+          <button class="button" onclick="javascript:cargarGestionEspecialidades()">
+            Gestion de Especialidad
+          </button>
+        </header>
+        
+      </div>
+</body>
+</html>

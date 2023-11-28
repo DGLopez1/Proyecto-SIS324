@@ -6,8 +6,8 @@ const Database = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'db_medipro',
-    // port: 3306
-    port: 3307
+    port: 3306
+    //port: 3307
 });
 
 console.log('DB_HOST:', process.env.DB_HOST);
