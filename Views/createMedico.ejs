@@ -1,0 +1,38 @@
+<div class="registro-container">
+    <h2>Registro de Medicos</h2>
+    <form id="formulario" action="/createMedico" method="post" onsubmit="return enviarFormCreateMedico()">
+        <label for="foto">Fotografia:</label>
+        <input type="text" id="foto" name="fotografia" required />
+
+        <label for="nombre-medico">Nombre:</label>
+        <input type="text" id="nombre-medico" name="nombre" required />
+
+        <label for="apellido-medico">Apellido:</label>
+        <input type="text" id="apellido-medico" name="apellido" required />
+
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email-medico" name="email" required />
+
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+        <!-- <input type="text" id="descripcion" name="descripcion" required /> -->
+
+        <label for="educacion">Educacion:</label>
+        <input type="text" id="educacion" name="educacion" required />
+
+        <label for="email">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required />
+
+        <label for="horarios">Horarios:</label>
+        <input type="text" id="horarios" name="horarios" required />
+
+        <label for="especialidad">Especialidad:</label>
+        <input type="number" id="id_especialidad" name="id_especialidad" required />
+
+        <button type="submit" class="registro-button">Registrar</button>
+
+    </form>
+</div>

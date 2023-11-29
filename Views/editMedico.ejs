@@ -1,0 +1,25 @@
+<div class="registro-container">
+    <h2>Registro de Medicos</h2>
+    <div id="formulario">
+
+      <label for="foto">Fotografia:</label>
+      <input type="text" id="foto" value="${medico.foto}" name="nombre" required />
+
+      <label for="nombre-medico">Nombre:</label>
+      <input type="text" id="nombre-medico" value="${medico.nombre}" name="nombre" required />
+
+      <label for="apellido-medico">Cuenta:</label>
+      <input type="text" id="apellido-medico" value="${medico.apellido}" name="cuenta" required />
+
+      <label for="telefono">Contraseña:</label>
+      <input type="number" id="telefono" value="${medico.telefono}" name="password" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email-medico" value="${medico.email}" name="email" required />
+      
+      <label for="especialidad">Especialidad:</label>
+      <input type="text" id="especialidad-medico" value="${especialidad.nombreEsp}" name="email" required />
+
+      <button class="registro-button" id="btn_editar" onclick="editarMedico()">Actualizar</button> 
+    </div>
+    </div>

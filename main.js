@@ -1,3 +1,4 @@
+const { response } = require("express");
 
 
 function cargarContenido(content) {
@@ -28,9 +29,12 @@ function abrirLogin() {
     window.open('/Views/login', '_blank');
 }
 
+
 function cargarGestionMedicos() {
-    cargarContenido('/Views/gestionMedicos');
+  
+  cargarContenido('/Views/gestionMedicos');
 }
+
 
 function cargarGestionUsuarios() {
     cargarContenido('/Views/gestionUsuarios');
@@ -208,5 +212,65 @@ function eliminarUsuario(userId) {
 }
 
 
+
+
+
+//todo:  GESTION DE MEDICOS
+
+function cargarFormRegisterMedico(content) {
+  var contenido = document.getElementById('container-medicos');
+  
+  fetch(content)
+      .then(response => response.text())
+      .then(data => {
+          contenido.innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
+}
+
+
+function enviarFormCreateMedico(){
+
+  var fotografia = document.getElementById('fotografia').value;
+  var nombre = document.getElementById('nombre-medico').value;
+  var apellido = document.getElementById('apellido-medico').value;
+  var telefono = document.getElementById('telefono').value;
+  var email = document.getElementById('email-medico').value;
+  var descripcion = document.getElementById('descripcion').value;
+  var educacion = document.getElementById('educacion').value;
+  var direccion = document.getElementById('direccion').value;
+  var horarios = document.getElementById('horarios').value;
+  var id_especialidad = document.getElementById('id_especialidad').value;
+
+
+  fetch('/createMedico',{
+    method: 'POST',
+    headers:{ 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fotografia: fotografia,
+      nombre: nombre,
+      apellido: apellido,
+      telefono: telefono,
+      email: email,
+      descripcion: descripcion,
+      educacion: educacion,
+      direccion: direccion,
+      horarios: horarios,
+      id_especialidad: id_especialidad
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      console.log(data.message);
+      cargarGestionMedicos();
+      // window.location.href = '/Views/gestionMedicos';
+    } else {
+        console.error(data.message);
+    }
+  })
+  .catch(error => console.error('Error:', error));
+  return false;
+}
 
 

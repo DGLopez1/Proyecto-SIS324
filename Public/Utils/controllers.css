@@ -37,6 +37,12 @@ body {
   overflow: hidden;
 }
 
+
+#tabla_usuarios table .btn_eliminar{
+  background: red;
+  color: white;
+}
+
 #tabla_usuarios th,
 #tabla_usuarios td {
   border: 1px solid rgba(0, 0, 0, 0.2);

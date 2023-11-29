@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
     <script src="/main.js"></script>
-</head>
-<body>
+
+
     <h3><%= gMedicos %><h3/>
     <header class="header2">
-        <button class="button" onclick="mostrar_formUsuario()">
-          Agregar Medico
-        </button>
+        <a href="javascript:cargarFormRegisterMedico('/Views/createMedico.ejs')"><button class="button">Agregar Medico</button></a>
         <div class="buscar">
           <label for="dato">Buscar</label>
           <input type="text" id="dato" />
@@ -19,7 +12,7 @@
         </div>
       </header>
 <button class="volverAtras"  onclick="volverAtras()">Volver Atras</button>
-      <div id="container">
+      <div id="container-medicos" class="container-medicos">
 
         <div id="tabla_usuarios">
           <table>
@@ -56,5 +49,3 @@
         </div>
         
       </div>
-</body>
-</html>

@@ -164,11 +164,6 @@ router.post('/createUsuario', (req, res) => {
 });
 
 
-
-
-
-
-
 //? ACTUALIZAR UN NUEVO USUARIO
 
 router.get('/Views/editUsuario/:id', (req, res) => {
@@ -215,5 +210,43 @@ router.delete('/deleteUsuario/:id', (req, res) => {
   });
   
 
+
+
+
+
+  //TODO: GESTION DE MEDICOS
+  // CREAR UN NUEVO MEDICO
+router.post('/createMedico', (req, res) => {
+    const fotografia = req.body.fotografia;
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const telefono = req.body.telefono;
+    const email = req.body.email;
+    const descripcion = req.body.descripcion;
+    const educacion = req.body.educacion;
+    const direccion = req.body.direccion;
+    const horarios = req.body.horarios;
+    const id_especialidad = req.body.id_especialidad;
+
+    Database.query('INSERT INTO medicos SET ?', {
+        fotografia: fotografia,
+        nombre: nombre,
+        apellido: apellido,
+        telefono: telefono,
+        email: email,
+        descripcion: descripcion,
+        educacion: educacion,
+        direccion: direccion,
+        horarios: horarios,
+        id_especialidad: id_especialidad
+    }, (error, results) => {
+        if (error) {
+            console.error(error);
+            res.json({ success: false, message: 'Error al crear el usuario' });
+        } else {
+            res.json({ success: true, message: 'Medico creado exitosamente' });
+        }
+    });
+});
 
 module.exports = router;
