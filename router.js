@@ -17,10 +17,13 @@ router.use(session({
 
 
 //? ROUTE FOR HOME PAGE
-router.get('/', (req, res) =>{
-
-    res.render('inicio');
+router.get('/', (req, res) => {
+    res.render('inicio', {
+        user: req.session.user // Pasa la sesión de usuario a la vista
+    });
 });
+
+
 
 
  router.get('/Views/login', (req, res) => {
@@ -267,5 +270,116 @@ router.post('/createMedico', (req, res) => {
     });
 });
 
+
+
+//? CREAR USUARIO MEDICO O NORMAL POR EL MISMO USUARIO 
+router.get('/crearusuario', (req, res) => {
+    var sqlEspecialidades = "SELECT * FROM especialidad";
+    
+    Database.query(sqlEspecialidades, (errorEspecialidades, resultadosEspecialidades) => {
+        if (errorEspecialidades) {
+            throw errorEspecialidades;
+        } else {
+            res.render('crearusuario', { especialidades: resultadosEspecialidades });
+        }
+    });
+});
+
+
+router.post('/createUsuarioMedico', (req, res) => {
+    const tipoUsuario = req.body.tipoUsuario;
+    console.log(req.body);
+    console.log(tipoUsuario);
+    if (tipoUsuario === 'normal') {
+        console.log("Creando usuario normal");
+        // Crear un usuario normal
+        const nombre = req.body.nombre;
+        const apellido = req.body.apellido;
+        const cuenta = req.body.cuenta;
+        const email = req.body.email;
+        const password = req.body.password;
+        const rol = '1'
+
+        Database.query('INSERT INTO usuarios SET ?', {
+            nombre: nombre,
+            apellido: apellido,
+            cuenta: cuenta,
+            email: email,
+            password: password,
+            rol: rol
+        }, (error, results) => {
+            if (error) {
+                console.error(error);
+                res.json({ success: false, message: 'Error al crear el usuario' });
+            } else {
+                //res.json({ success: true, message: 'Usuario creado exitosamente' });
+
+                req.session.user = {
+                    nombre: nombre,
+                    // Otros datos del usuario
+                };
+                res.redirect('/');
+            }
+        });
+    } else if (tipoUsuario === 'medico') {
+        // Crear un médico
+        console.log("Creando usuario médico");
+        const fotografia = req.body.fotografia;
+        const nombre = req.body.nombre;
+        const apellido = req.body.apellido;
+        const telefono = req.body.telefono;
+        const email = req.body.email;
+        const descripcion = req.body.descripcion;
+        const educacion = req.body.educacion;
+        const direccion = req.body.direccion;
+        const horarios = req.body.horarios;
+        const id_especialidad = req.body.especialidad;
+
+        Database.query('INSERT INTO medicos SET ?', {
+            fotografia: fotografia,
+            nombre: nombre,
+            apellido: apellido,
+            telefono: telefono,
+            email: email,
+            descripcion: descripcion,
+            educacion: educacion,
+            direccion: direccion,
+            horarios: horarios,
+            id_especialidad: id_especialidad
+        }, (error, results) => {
+            if (error) {
+                console.error(error);
+                res.json({ success: false, message: 'Error al crear el médico' });
+            } else {
+                //res.json({ success: true, message: 'Médico creado exitosamente' });
+                req.session.user = {
+                    nombre: nombre,
+                    // Otros datos del usuario
+                };
+                res.redirect('/');
+            }
+        });
+    } else {
+        res.json({ 
+            success: false,
+            message: 'Tipo de usuario no válido',
+            tipoUsuario: tipoUsuario,
+            cuerpoPeticion: req.body
+          });
+    }
+});
+
+// Agrega esta ruta en tu archivo de rutas
+router.get('/logout', (req, res) => {
+    // Destruye la sesión
+    req.session.destroy((err) => {
+        if (err) {
+            console.error(err);
+        } else {
+            // Redirige al usuario a la página de inicio después de cerrar sesión
+            res.redirect('/');
+        }
+    });
+});
 
 module.exports = router;

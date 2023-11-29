@@ -18,11 +18,21 @@
                 <img src="/icons/truck-medical-solid.svg" alt="">
                 <h2>MEDI-CONECT</h2>
             </div>
-            <div class="autentication">
-                <a href="javascript:abrirLogin()">Iniciar Sesión</a>
-                <a href="/about">Crear Cuenta</a>
-            </div>
+            <% if (user) { %>
+                <p>Bienvenido, <%= user.nombre %>!</p>
+                <a href="/logout">Logout</a>
+                <!-- Otros elementos para usuarios autenticados -->
+            <% } else { %>
+                <div class="autentication">
+                    <a href="javascript:abrirLogin()">Iniciar Sesión</a>
+                    <a href="/crearusuario">Crear Cuenta</a>
+                </div>
+                <!-- Otros elementos para usuarios no autenticados -->
+            <% } %>
+            
         </div>
+
+ 
 
 
         <!-- MAIN  -->

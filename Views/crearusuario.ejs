@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" href="../styles/crearcuenta.css" />
+    
+</head>
+
+<body id="crear_cuenta">
+    <main>
+        
+        <form action="/createUsuarioMedico" class="crear_cuenta_form" id="crear_cuenta_form" method="post">
+            <label for="nombre"> Nombre</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Su nombre">
+            </label>
+            <label for="apellido"> Apellido</label>
+            <input type="text" name="apellido" id="apellido" placeholder="Su apellido">
+            </label>
+
+            <br><br>
+            <label for="cuenta"> Cuenta </label>
+            <input type="text" name="cuenta" id="cuenta" placeholder="Tipo de Cuenta">
+            </label>
+            <br><br>
+            <label for="correo"> Correo </label>
+            <input type="email" name="email" id="email" placeholder="Correo">
+            </label>
+            <br><br>
+            <label for="clave"> Clave </label>
+            <input type="password" name="password" id="password" placeholder="password">
+            </label>
+            <br><br>
+            <label for="rol">Rol:</label>
+            <select id="rol" name="rol" required>
+                <option value="admin">Admin</option>
+                <option value="usuario">Usuario</option>
+            </select>
+
+            <hr>
+            <br>
+            <h2>Tipo de Usuario</h2><br>
+            <select id="tipoUsuario" name="tipoUsuario" required>
+                <option value="normal">Usuario</option>
+                <option value="medico">Médico</option>
+            </select>
+            <br>
+
+            <div id="camposMedico" style="display:none">
+                <br>
+                <h3>Datos de su clinica</h3>
+                <br>
+                <label for="foto">Fotografia:</label>
+                <input type="text" id="foto" name="fotografia"  />
+                <br><br>
+
+                <label for="telefono">Telefono:</label>
+                <input type="text" id="telefono" name="telefono" />
+
+                <label for="nombre-clinica">
+                    <input type="text" name="nombre-clinica" id="nombre-clinica" placeholder="Nombre de su clinica">
+                </label>
+                <br><br>
+                <label for="ciudad">Ubicación</label> <br>
+                <select name="ciudad" id="ciudad">
+                    <option value="cbba">Cochabamba</option>
+                    <option value="scz">Santa Cruz</option>
+                    <option value="lpz">La Paz</option>
+                    <option value="or">Oruro</option>
+                    <option value="pt">Potosi</option>
+                    <option value="tj">Tarija</option>
+                    <option value="bn">Beni</option>
+                    <option value="pn">Pando</option>
+                </select>
+                </label>
+                <br>
+                <label for="especialidad">Especialidad:</label>
+                <select name="especialidad" id="especialidad">
+                    <% especialidades.forEach(especialidad=> { %>
+                        <option value="<%= especialidad.id %>">
+                            <%= especialidad.nombre %>
+                        </option>
+                        <% }); %>
+                </select>
+                <br>
+                <label for="educacion">Educacion:</label>
+                <input type="text" id="educacion" name="educacion"  />
+
+                <label for="email">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" />
+
+                <label for="horarios">Horarios:</label>
+                <input type="text" id="horarios" name="horarios" />
+
+
+                <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+        
+                <hr>
+            </div>
+
+            <div>
+                <div class="boton">
+                    <button type="submit" class="guardar">Guardar</button>
+                </div>
+            </div>
+        </form>
+        <div>
+            <button class="cancelar">Cancelar</button>
+        </div>
+    </main>
+    <script>
+        //cambio para visualizar campos de médico
+        const select = document.getElementById('tipoUsuario');
+        const camposMedico = document.getElementById('camposMedico');
+        select.addEventListener('change', () => {
+            if (select.value === 'medico') {
+                camposMedico.style.display = 'block';
+            } else {
+                camposMedico.style.display = 'none';
+            }
+        });
+        const form = document.getElementById('crear_cuenta_form');
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  nav {
+    width: 100%;
+    height: 100px;
+    background-color: #83ADFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+  }
+  
+  .items-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    color: #FFF;
+  }
+  
+  .item-login {
+    cursor: pointer;
+  }
+  
+  .item-login:hover {
+    transform: scale(1.1);
+    transition: 0.1s;
+  
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 10px;
+    color: #474747; 
+  }
+  
+  input {
+    width: 298px;
+    height: 2.2rem;
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem;
+    outline: none;
+    text-align: center;
+    background-color: #f5f1f1;
+    color: #000000;
+    border: 1px solid #8f8e8e;
+  }
+  
+  input:focus {
+    border: 1px solid #585858;
+  }
+  
+  textarea {
+    background-color: #f5f1f1;
+    border: 1px solid #8f8e8e;
+    border-radius: 10px;
+  }
+  
+  select {
+    background-color: #f5f1f1;
+    border: 1px solid #8f8e8e;
+    border-radius: 10px;
+    width: 298px;
+    height: 2.2rem;
+  }
+  
+  option {
+    background-color: #f5f1f1;
+    border: 1px solid #8f8e8e;
+    border-radius: 10px;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 10px;
+  }
+  
+  .button div {
+    cursor: pointer;
+    font-family: inherit;
+  }
+  
+  button{
+    display: flex;
+    justify-content: center;
+    width: 130px;
+    height: 38px;
+    align-items: center;
+    border-radius: 10px;
+  }
+  
+  .guardar {
+    background-color: #93eea7;
+  }
+  
+  .cancelar {
+    background-color: #e92929;
+    color: #FFF;
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+    transition: 0.1s;
+  }

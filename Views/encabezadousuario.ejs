@@ -1,0 +1,18 @@
+<!-- HEADER para usuarios autenticados -->
+<div class="header">
+    <div class="home">
+        <img src="/icons/house-solid.svg" alt="home">
+    </div>
+    <div class="medi-conect">
+        <img src="/icons/truck-medical-solid.svg" alt="">
+        <h2>MEDI-CONECT</h2>
+    </div>
+    <div class="usuario-info">
+        <img src="<%= user.foto %>" alt="<%= user.nombre %>">
+        <span><%= user.nombre %></span>
+        <div class="menu-logout">
+            <a href="/logout">Cerrar sesión</a>
+            <!-- Otros elementos de menú si es necesario -->
+        </div>
+    </div>
+</div>
