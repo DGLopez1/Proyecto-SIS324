@@ -12,6 +12,9 @@ function cargarContenido(content) {
 function cargarMedicos() {
     cargarContenido('/medicos');
 }
+function cargarAbout() {
+    cargarContenido('/about');
+}
 
 function cargarMedico() {
     var contenido = document.getElementById('contenido');
@@ -23,6 +26,10 @@ function cargarMedico() {
       .catch(error => console.error('Error:', error));
 }
 
+
+app.get('/about', function(req, res) {
+  res.render('about');
+});
 
 function abrirLogin() {
     // Abre la ruta /Views/login definida en router.js en una nueva ventana
@@ -42,6 +49,7 @@ function cargarGestionUsuarios() {
 function cargarGestionEspecialidades() {
     cargarContenido('/Views/gestionEspecialidades');
 }
+
 
 function volverAtras(){
     var contenido = document.getElementById('contenido');
