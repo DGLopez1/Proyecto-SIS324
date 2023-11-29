@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
     <script src="/main.js"></script>
-</head>
-<body>
+
     <h3><%= gUsuarios %><h3/>
     <header class="header2">
-        <button class="button" onclick="mostrar_formUsuario()">
-          Agregar Usuarios
-        </button>
+        <a href="javascript:cargarFormRegister('/Views/createUser.ejs')"><button class="button">Agregar Usuarios</button></a>
         <div class="buscar">
           <label for="dato">Buscar</label>
           <input type="text" id="dato" />
@@ -20,7 +12,7 @@
       </header>
 <button class="volverAtras"  onclick="volverAtras()">Volver Atras</button>
 
-      <div id="container">
+      <div id="container-usuarios" class="container-usuarios">
         <div id="tabla_usuarios">
             <table>
                 <thead>
@@ -46,8 +38,9 @@
                             <td><%= usuario.email %></td>
                             <td><%= usuario.rol %></td>
                             <td>
-                                <button data-action="editar" onclick="javascript:formEditUsuario('<%= usuario.id %>');">Editar</button>
-                                <button data-action="eliminar" onclick="javascript:eliminarUsuario('<%= usuario.id %>');">Eliminar</button>
+                                <!-- <a href="/updateUsuario/<%= usuario.id %>"><button class="button">Actualizar</button></a> -->
+                                <button data-action="editar" onclick="editarUsuario('<%= usuario.id %>')">Editar</button>
+                                <button class="button" onclick="eliminarUsuario('<%= usuario.id %>')">Eliminar</button>
                             </td>
                         </tr>
                     <% }); %>
@@ -55,7 +48,4 @@
             </table>
         </div>
     </div>
-</body>
-</html>
-</body>
-</html>
+

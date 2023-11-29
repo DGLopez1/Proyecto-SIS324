@@ -27,19 +27,6 @@ router.get('/', (req, res) =>{
      res.render('login',{error: ''} );
  });
 
-// router.get('/Views/gestionMedicos', (req, res) => {
-//     res.render('gestionMedicos', {gMedicos: 'Gestionar Medicos' });
-// });
-
-
-// router.get('/Views/gestionUsurios', (req, res) => {
-//     res.render('gestionUsuarios', {gUsuarios : 'Gestionar Usuarios' });
-// });
-
-// router.get('/Views/gestionEspecialidades', (req, res) => {
-//     res.render('gestionEspecialidades', {gEspecialidades : 'Gestionar Especialidades' });
-// });
-
 
 router.get('/Views/register', (req, res)=>{
     res.render('register');
@@ -64,7 +51,7 @@ router.post('/Views/controllers', (req, res) =>{
                   } );
             }else{
                // req.session.cuenta= result[0].cuenta;
-                res.render('controllers', {auth: '"Bienvenido   '+result[0].cuenta+'"' });
+                res.render('controllers', {auth: '"Bienvenido   '+result[0].nombre+'"' });
             }
         })
     }else{
@@ -143,6 +130,90 @@ router.get('/medicos', (req, res) =>{
     });
 });
 
+
+
+// const crudUser = require('./Controllers/constrolUser');
+// router.post('/createUsuario', crudUser.createUsuario);
+
+//? GESTION DE USUARIOS
+
+// CREAR UN NUEVO USUARIO
+router.post('/createUsuario', (req, res) => {
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const cuenta = req.body.cuenta;
+    const email = req.body.email;
+    const password = req.body.password;
+    const rol = req.body.rol;
+
+    Database.query('INSERT INTO usuarios SET ?', {
+        nombre: nombre,
+        apellido: apellido,
+        cuenta: cuenta,
+        email: email,
+        password: password,
+        rol: rol
+    }, (error, results) => {
+        if (error) {
+            console.error(error);
+            res.json({ success: false, message: 'Error al crear el usuario' });
+        } else {
+            res.json({ success: true, message: 'Usuario creado exitosamente' });
+        }
+    });
+});
+
+
+
+
+
+
+
+//? ACTUALIZAR UN NUEVO USUARIO
+
+router.get('/Views/editUsuario/:id', (req, res) => {
+    const userId = req.params.id;
+    // Recupera la información del usuario con el ID y pasa los datos a la vista
+    Database.query('SELECT * FROM usuarios WHERE id = ?', [userId], (error, result) => {
+        if (error) {
+            console.error(error);
+            res.render('error', { message: 'Error al obtener datos del usuario' });
+        } else {
+            res.render('editUser', { usuario: result[0] });
+        }
+    });
+});
+
+router.post('/editUsuario/:id', (req, res) => {
+    const userId = req.params.id;
+    const updatedData = req.body; // Datos actualizados del formulario
+
+    Database.query('UPDATE usuarios SET ? WHERE id = ?', [updatedData, userId], (error, result) => {
+        if (error) {
+            console.error(error);
+            res.json({ success: false, message: 'Error al editar el usuario' });
+        } else {
+            res.json({ success: true, message: 'Usuario editado exitosamente' });
+        }
+    });
+});
+
+
+
+//? PARA EL DELETE DEL USUARIO
+router.delete('/deleteUsuario/:id', (req, res) => {
+    const userId = req.params.id;
+  
+    Database.query('DELETE FROM usuarios WHERE id = ?', [userId], (error, result) => {
+      if (error) {
+        console.error(error);
+        res.json({ success: false, message: 'Error al eliminar el usuario' });
+      } else {
+        res.json({ success: true, message: 'Usuario eliminado exitosamente' });
+      }
+    });
+  });
+  
 
 
 module.exports = router;

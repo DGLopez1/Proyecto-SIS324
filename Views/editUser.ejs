@@ -1,0 +1,28 @@
+<div class="registro-container">
+    <h2>EDITAR USUARIO</h2>
+    <form id="formulario" action="/editUsuario/<%= usuario.id %>" method="post" onsubmit="return enviarFormularioUpdate('<%= usuario.id %>')">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" value="<%= usuario.nombre %>" name="nombre" required />
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" value="<%= usuario.apellido %>" name="apellido" required />
+
+        <label for="cuenta">Cuenta:</label>
+        <input type="text" id="cuenta" value="<%= usuario.cuenta %>" name="cuenta" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" value="<%= usuario.email %>" name="email" required />
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" value="<%= usuario.password %>" name="password" required />
+
+        <label for="rol">Rol:</label>
+        <select id="rol" name="rol" required>
+            <option value="<%= usuario.rol %>">Admin</option>
+            <option value="usuario">Usuario</option>
+        </select>
+
+        <button id="guardar-edicion" onclick="enviarFormularioUpdate('<%= usuario.id %>')">Actualizar</button>
+
+    </form>
+</div>

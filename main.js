@@ -59,3 +59,154 @@ function volverAtras(){
 
 
 
+
+
+
+//? GESTION DE USUARIOS
+
+// PARA EL CREATE
+function enviarFormularioCreate() {
+  var nombre = document.getElementById('nombre').value;
+  var apellido = document.getElementById('apellido').value;
+  var cuenta = document.getElementById('cuenta').value;
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  var rol = document.getElementById('rol').value;
+
+  // Realiza la solicitud para crear un usuario
+  fetch("/createUsuario", {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          nombre: nombre,
+          apellido: apellido,
+          cuenta: cuenta,
+          email: email,
+          password: password,
+          rol: rol
+      })
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+          // Muestra un mensaje de éxito si lo deseas
+          console.log(data.message);
+          
+          // Después de cargar el formulario, realiza una solicitud para cargar la lista de usuarios
+          cargarGestionUsuarios();
+      } else {
+          // Muestra mensajes de error si lo deseas
+          console.error(data.message);
+      }
+  })
+  .catch(error => console.error('Error:', error));
+
+  // Retorna false para evitar que el formulario se envíe de la manera tradicional
+  return false;
+}
+
+
+
+function cargarFormRegister(content) {
+  var contenido = document.getElementById('container-usuarios');
+  
+  fetch(content)
+      .then(response => response.text())
+      .then(data => {
+          contenido.innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
+}
+
+
+
+
+//? PARA EL UPDATE DEL USUARIO
+
+function cargarFormEdit(content) {
+  var contenido = document.getElementById('container-usuarios');
+  
+  fetch(content)
+      .then(response => response.text())
+      .then(data => {
+          contenido.innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
+}
+
+function editarUsuario(userId) {
+  cargarFormEdit(`/Views/editUsuario/${userId}`);
+}
+
+
+function enviarFormularioUpdate(userId) {
+  // Obtener los datos del formulario de edición
+  const nombre = document.getElementById('nombre').value;
+  const apellido = document.getElementById('apellido').value;
+  const cuenta = document.getElementById('cuenta').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const rol = document.getElementById('rol').value;
+
+  // Construir el objeto de datos para enviar al servidor
+  const updatedUserData = {
+    nombre: nombre,
+    apellido: apellido,
+    cuenta: cuenta,
+    email: email,
+    password: password,
+    rol: rol
+  };
+
+  // Realizar la petición fetch al servidor para actualizar el usuario
+  fetch(`/editUsuario/${userId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedUserData)
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Redirigir a la página de gestión de usuarios después de la edición
+        cargarGestionUsuarios();
+      } else {
+        // Manejar errores o mostrar mensajes de error
+        console.error(data.message);
+      }
+    })
+    .catch(error => console.error('Error:', error));
+
+  // Retorna false para evitar que el formulario se envíe de la manera tradicional
+  return false;
+}
+
+
+
+
+//? Para el metodo DELETE
+function eliminarUsuario(userId) {
+  if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+    // Realiza la solicitud fetch para eliminar el usuario
+    fetch(`/deleteUsuario/${userId}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Recarga la gestión de usuarios después de la eliminación
+        cargarGestionUsuarios();
+      } else {
+        console.error(data.message);
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  }
+}
+
+
+
+
