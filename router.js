@@ -33,6 +33,8 @@ router.get('/Views/register', (req, res)=>{
 });
 
 
+
+
 //? PARA EL LOGIN 
 router.post('/Views/controllers', (req, res) =>{
     var email = req.body.email;
@@ -131,6 +133,23 @@ router.get('/medicos', (req, res) =>{
 });
 
 
+//Para about
+const ejs = require('ejs');
+const path = require('path');
+
+router.get('/about', function(req, res) {
+    console.log("Accediendo a la ruta /about");
+    ejs.renderFile(path.join(__dirname, 'views', 'about.ejs'), function(err, str){
+        if(err){
+            console.error(err);
+            res.status(500).send('Server Error');
+        } else {
+            res.send(str);
+        }
+    });
+});
+
+
 
 // const crudUser = require('./Controllers/constrolUser');
 // router.post('/createUsuario', crudUser.createUsuario);
@@ -213,7 +232,4 @@ router.delete('/deleteUsuario/:id', (req, res) => {
       }
     });
   });
-  
-
-
 module.exports = router;
