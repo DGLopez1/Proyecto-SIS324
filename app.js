@@ -41,6 +41,6 @@ app.use(session({
 const Database = require('./Database/db');
 
 app.listen(5000, () => {
-  console.log("Servidor respondiendo en https://localhost:5000");
+  console.log("Servidor respondiendo en http://localhost:5000");
 });
 
