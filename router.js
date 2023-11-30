@@ -219,19 +219,30 @@ router.get('/medicos', (req, res) =>{
 
 
 //? PARA MOSTRAR ESPECIALIDADES
-router.get('/especialidades', (req, res) =>{
- 
-     var sql = "SELECT * FROM especialidad";
 
-     Database.query(sql, (error, results) => {
+router.get('/especialidades', (req, res) => {
+  
+    Database.query("SELECT perfil, nombre, descripcion FROM especialidad", (error, resultado) => {
+      if (error) {
+        throw error;
+      } else {
+        res.render('especialidades', { listaEspecialidades: resultado });
+      }
+    });
+});
+  
 
-         if(error){
-             throw error;
-         }else{
-             res.render('especialidades', {listaEspecialidades: results});
-         }
-     });
- });
+// router.get('/especialidades', (req, res) => {
+//     var sqlEspecialidades = "SELECT * FROM especialidad";
+    
+//     Database.query(sqlEspecialidades, (errorEspecialidades, resultadosEspecialidades) => {
+//         if (errorEspecialidades) {
+//             throw errorEspecialidades;
+//         } else {
+//             res.render('especialidades', { especialidades: resultadosEspecialidades });
+//         }
+//     });
+// });
 
 
 
@@ -378,7 +389,6 @@ router.post('/createMedico', (req, res) => {
 
 
 
-<<<<<<< HEAD
 
 //? PARA EDITAR MEDICOS
 router.get('/Views/editMedico/:id', (req, res) => {
@@ -427,16 +437,12 @@ router.delete('/deleteMedico/:id', (req, res) => {
 
 
 
--
 
 
 
 
 
 
-
-=======
->>>>>>> 8e96e14bb8532ea70211c577f5aa771154214190
 //? CREAR USUARIO MEDICO O NORMAL POR EL MISMO USUARIO 
 router.get('/crearusuario', (req, res) => {
     var sqlEspecialidades = "SELECT * FROM especialidad";

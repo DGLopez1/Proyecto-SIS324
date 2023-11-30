@@ -8,6 +8,39 @@ body {
   width: 100%;
   margin: 0 auto;
 }
+.container .container-cuenta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .container-cuenta h1 {
+  color: blue;
+}
+.container .container-cuenta .crear_cuenta_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .container-cuenta .crear_cuenta_form label {
+  margin-top: 10px;
+}
+.container .container-cuenta .crear_cuenta_form input,
+.container .container-cuenta .crear_cuenta_form select,
+.container .container-cuenta .crear_cuenta_form textarea {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.container .container-cuenta .crear_cuenta_form #camposMedico {
+  display: none;
+}
+.container .container-cuenta .crear_cuenta_form .boton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.container .container-cuenta .crear_cuenta_form .cancelar {
+  margin-top: 10px;
+}
 
 .header {
   background-color: #83adff;
@@ -57,8 +90,9 @@ body {
   flex-direction: column;
   width: 200px;
   height: auto;
-  background: rgb(55, 0, 255);
+  background: rgb(30, 2, 132);
   padding: 10px;
+  height: 100vh;
   align-items: center;
   gap: 20px;
 }
@@ -319,6 +353,11 @@ body {
 .main .contenido .specialties-list {
   display: flex;
   flex-direction: column;
+  overflow: auto;
+}
+.main .contenido .specialties-list h1 {
+  text-align: center;
+  color: #007bff;
 }
 .main .contenido .specialties-list ul {
   list-style: none;
@@ -333,16 +372,17 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 15px;
-  overflow: hidden;
-  width: 300px;
+  overflow-y: hidden;
+  width: 520px;
+  height: auto;
   transition: transform 0.3s ease-in-out;
 }
 .main .contenido .specialties-list ul .specialty-card:hover {
   transform: scale(1.05);
 }
 .main .contenido .specialties-list ul .specialty-card .specialty-image {
-  width: 100%;
-  height: 150px;
+  width: auto;
+  height: 200px;
   background-size: cover;
   background-position: center;
 }
@@ -357,4 +397,41 @@ body {
 .main .contenido .specialties-list ul .specialty-card .specialty-content .specialty-description {
   font-size: 1em;
   color: #666;
+}
+.main .contenido .about {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  text-align: center;
+}
+.main .contenido .about h2 {
+  color: #007bff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.main .contenido .about h3 {
+  color: #007bff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.main .contenido .about .container {
+  width: 100%;
+  margin: 0 auto;
+  max-height: 600px;
+  overflow-y: auto;
+}
+.main .contenido .about p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+.main .contenido .about ul {
+  list-style: none;
+  padding: 0;
+}
+.main .contenido .iconos-about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
 }/*# sourceMappingURL=styles.css.map */

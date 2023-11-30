@@ -9,6 +9,14 @@ function cargarContenido(content) {
         .catch(error => console.error('Error:', error));
 }
 
+function cargarFormCrearCuenta(content) {
+  var contenido = document.getElementById('container');
+  fetch(content)
+      .then(response => response.text())
+      .then(data => contenido.innerHTML = data)
+      .catch(error => console.error('Error:', error));
+}
+
 function cargarMedicos() {
     cargarContenido('/medicos');
 }
@@ -27,9 +35,14 @@ function cargarMedico() {
 }
 
 
-app.get('/about', function(req, res) {
-  res.render('about');
-});
+function cargarEspecialidades(){
+  cargarContenido('/especialidades');
+}
+
+
+// app.get('/about', function(req, res) {
+//   res.render('about');
+// });
 
 function abrirLogin() {
     // Abre la ruta /Views/login definida en router.js en una nueva ventana
@@ -69,6 +82,12 @@ function volverAtras(){
     `
 }
 
+
+
+
+function volverInicio() {
+  window.location.href = '/Views/inicio.ejs';
+}
 
 
 
@@ -354,10 +373,10 @@ function enviarFormularioUpdateMedico(userId) {
 
 
 // Enviar formulario cuando se hace clic en el botón de actualizar
-document.getElementById('formulario-medico').addEventListener('click', function (event) {
-  event.preventDefault(); // Evitar el comportamiento predeterminado del botón
-  enviarFormularioUpdateMedico('<%= medico.id %>');
-});
+// document.getElementById('formulario-medico').addEventListener('click', function (event) {
+//   event.preventDefault(); // Evitar el comportamiento predeterminado del botón
+//   enviarFormularioUpdateMedico('<%= medico.id %>');
+// });
 
 
 

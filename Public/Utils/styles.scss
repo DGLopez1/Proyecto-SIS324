@@ -7,6 +7,47 @@ body {
 .container {
     width: 100%;
     margin: 0 auto;
+
+    .container-cuenta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            color: blue;
+        }
+
+        .crear_cuenta_form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            label {
+                margin-top: 10px;
+            }
+
+            input,
+            select,
+            textarea {
+                margin-bottom: 10px;
+                padding: 5px;
+            }
+
+            #camposMedico {
+                display: none;
+            }
+
+            .boton {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .cancelar {
+                margin-top: 10px;
+            }
+        }
+    }
 }
 
 .header {
@@ -67,8 +108,9 @@ body {
         flex-direction: column;
         width: 200px;
         height: auto;
-        background: rgb(55, 0, 255);
+        background: rgb(30, 2, 132);
         padding: 10px;
+        height: 100vh;
         align-items: center;
         gap: 20px;
 
@@ -382,6 +424,12 @@ body {
         .specialties-list {
             display: flex;
             flex-direction: column;
+            overflow: auto;
+
+            h1 {
+                text-align: center;
+                color: #007bff;
+            }
 
             ul {
                 list-style: none;
@@ -396,8 +444,9 @@ body {
                     border-radius: 8px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                     margin: 15px;
-                    overflow: hidden;
-                    width: 300px;
+                    overflow-y: hidden;
+                    width: 520px;
+                    height: auto;
                     transition: transform 0.3s ease-in-out;
 
                     &:hover {
@@ -405,8 +454,8 @@ body {
                     }
 
                     .specialty-image {
-                        width: 100%;
-                        height: 150px;
+                        width: auto;
+                        height: 200px;
                         background-size: cover;
                         background-position: center;
                     }
@@ -427,6 +476,44 @@ body {
                     }
                 }
             }
+        }
+
+        .about {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .about h2 {
+            color: #007bff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .about h3 {
+            color: #007bff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .about .container {
+            width: 100%;
+            margin: 0 auto;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .about ul {
+            list-style: none;
+            padding: 0;
+        }
+        .iconos-about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 1rem;
         }
     }
 }
