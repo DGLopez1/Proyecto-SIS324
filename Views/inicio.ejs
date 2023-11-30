@@ -18,8 +18,8 @@
                 <img src="/icons/truck-medical-solid.svg" alt="">
                 <h2>MEDI-CONECT</h2>
             </div>
-            <% if (user) { %>
-                <p>Bienvenido, <%= user.nombre %>!</p>
+            <% if (usuario) { %>
+                <p>Bienvenido, <%= usuario.nombre %>! <% if (usuario.tipo === 'normal') { %> <a href="/editarUsuario">Editar Perfil</a> <% } else if (usuario.tipo === 'medico') { %> <a href="/editarMedico">Editar Perfil Médico</a> <% } %> </p>
                 <a href="/logout">Logout</a>
                 <!-- Otros elementos para usuarios autenticados -->
             <% } else { %>
@@ -28,14 +28,10 @@
                     <a href="/crearusuario">Crear Cuenta</a>
                 </div>
                 <!-- Otros elementos para usuarios no autenticados -->
-            <% } %>
-            
+            <% } %>                  
         </div>
 
- 
-
-
-        <!-- MAIN  -->
+       <!-- MAIN  -->
         <div class="main">
             <!-- MENU  -->
             <div class="menu">

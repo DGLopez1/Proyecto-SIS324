@@ -12,15 +12,19 @@ const session = require('express-session');
 router.use(session({
   secret: 'secret',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: { maxAge: null }
 }));
 
 
 //? ROUTE FOR HOME PAGE
 router.get('/', (req, res) => {
+    console.log(req.session.usuario)
     res.render('inicio', {
-        user: req.session.user // Pasa la sesión de usuario a la vista
+        usuario: req.session.usuario
+         // Pasa la sesión de usuario a la vista
     });
+    
 });
 
 
@@ -210,7 +214,12 @@ router.post('/editUsuario/:id', (req, res) => {
             console.error(error);
             res.json({ success: false, message: 'Error al editar el usuario' });
         } else {
+           if(res.session.usuario) {
+                res.redirect('/')
+            }else {
             res.json({ success: true, message: 'Usuario editado exitosamente' });
+            res.render('editUser', { usuario: result[0]})
+            }              
         }
     });
 });
@@ -314,10 +323,18 @@ router.post('/createUsuarioMedico', (req, res) => {
             } else {
                 //res.json({ success: true, message: 'Usuario creado exitosamente' });
 
-                req.session.user = {
-                    nombre: nombre,
-                    // Otros datos del usuario
-                };
+                const usuarioId = results.insertId; // Obtén el ID del médico insertado
+
+                req.session.usuario = {
+                    nombre : req.body.nombre,
+                    apellido : req.body.apellido,
+                    cuenta : req.body.cuenta,
+                    email : req.body.email,
+                    password : req.body.password,
+                    rol : '1',
+                    tipo : tipoUsuario,
+                    id: usuarioId // Usa el ID del médico insertado
+        };
                 res.redirect('/');
             }
         });
@@ -351,11 +368,22 @@ router.post('/createUsuarioMedico', (req, res) => {
                 console.error(error);
                 res.json({ success: false, message: 'Error al crear el médico' });
             } else {
-                //res.json({ success: true, message: 'Médico creado exitosamente' });
-                req.session.user = {
+                const medicoId = results.insertId; // Obtén el ID del médico insertado
+
+                req.session.usuario = {
+                    fotografia: fotografia,
                     nombre: nombre,
-                    // Otros datos del usuario
-                };
+                    apellido: apellido,
+                    telefono: telefono,
+                    email: email,
+                    descripcion: descripcion,
+                    educacion: educacion,
+                    direccion: direccion,
+                    horarios: horarios,
+                    id_especialidad: id_especialidad,
+                    tipo: tipoUsuario,
+                    id: medicoId // Usa el ID del médico insertado
+        };
                 res.redirect('/');
             }
         });
@@ -381,5 +409,17 @@ router.get('/logout', (req, res) => {
         }
     });
 });
+
+router.get('/editarUsuario', (req, res) => {
+    
+    res.render('editUser', { usuario: req.session.usuario });
+});
+
+router.get('/editarMedico', (req, res) => {
+    
+    res.render('medicos', {listaMedicos: req.session.usuario});
+});
+
+
 
 module.exports = router;
