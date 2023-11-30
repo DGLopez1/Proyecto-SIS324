@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 
 
 function cargarContenido(content) {
@@ -154,7 +154,7 @@ function editarUsuario(userId) {
 
 
 function enviarFormularioUpdate(userId) {
-  // Obtener los datos del formulario de edición
+
   const nombre = document.getElementById('nombre').value;
   const apellido = document.getElementById('apellido').value;
   const cuenta = document.getElementById('cuenta').value;
@@ -162,7 +162,6 @@ function enviarFormularioUpdate(userId) {
   const password = document.getElementById('password').value;
   const rol = document.getElementById('rol').value;
 
-  // Construir el objeto de datos para enviar al servidor
   const updatedUserData = {
     nombre: nombre,
     apellido: apellido,
@@ -172,7 +171,6 @@ function enviarFormularioUpdate(userId) {
     rol: rol
   };
 
-  // Realizar la petición fetch al servidor para actualizar el usuario
   fetch(`/editUsuario/${userId}`, {
     method: 'POST',
     headers: {
@@ -183,16 +181,13 @@ function enviarFormularioUpdate(userId) {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        // Redirigir a la página de gestión de usuarios después de la edición
         cargarGestionUsuarios();
       } else {
-        // Manejar errores o mostrar mensajes de error
         console.error(data.message);
       }
     })
     .catch(error => console.error('Error:', error));
 
-  // Retorna false para evitar que el formulario se envíe de la manera tradicional
   return false;
 }
 
@@ -244,6 +239,8 @@ function cargarFormRegisterMedico(content) {
 
 function enviarFormCreateMedico(){
 
+  // alert('entro');
+
   var fotografia = document.getElementById('fotografia').value;
   var nombre = document.getElementById('nombre-medico').value;
   var apellido = document.getElementById('apellido-medico').value;
@@ -287,8 +284,11 @@ function enviarFormCreateMedico(){
 }
 
 
-//? PARA EL UPDATE MEDICOS
 
+
+
+
+//? PARA EL UPDATE MEDICOS
 function cargarFormEditMedico(content) {
   var contenido = document.getElementById('container-medicos');
   
@@ -332,7 +332,6 @@ function enviarFormularioUpdateMedico(userId) {
     id_especialidad: id_especialidad
   };
 
-  // Realizar la petición fetch al servidor para actualizar el usuario
   fetch(`/editMedico/${userId}`, {
     method: 'POST',
     headers: {
@@ -343,19 +342,25 @@ function enviarFormularioUpdateMedico(userId) {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        // Redirigir a la página de gestión de usuarios después de la edición
-        // cargarGestionUsuarios();
         cargarGestionMedicos();
       } else {
-        // Manejar errores o mostrar mensajes de error
         console.error(data.message);
       }
     })
     .catch(error => console.error('Error:', error));
 
-  // Retorna false para evitar que el formulario se envíe de la manera tradicional
   return false;
 }
+
+
+// Enviar formulario cuando se hace clic en el botón de actualizar
+document.getElementById('formulario-medico').addEventListener('click', function (event) {
+  event.preventDefault(); // Evitar el comportamiento predeterminado del botón
+  enviarFormularioUpdateMedico('<%= medico.id %>');
+});
+
+
+
 
 
 
@@ -363,15 +368,13 @@ function enviarFormularioUpdateMedico(userId) {
 //? Para el metodo DELETE MEDICOS
 function eliminarMedico(userId) {
   if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-    // Realiza la solicitud fetch para eliminar el usuario
+
     fetch(`/deleteMedico/${userId}`, {
       method: 'DELETE'
     })
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        // Recarga la gestión de usuarios después de la eliminación
-        // cargarGestionUsuarios();
         cargarGestionMedicos();
       } else {
         console.error(data.message);

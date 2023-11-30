@@ -235,6 +235,12 @@ router.delete('/deleteUsuario/:id', (req, res) => {
 
   
 
+
+
+
+
+
+
   //TODO: GESTION DE MEDICOS
   // CREAR UN NUEVO MEDICO
 router.post('/createMedico', (req, res) => {
@@ -265,7 +271,8 @@ router.post('/createMedico', (req, res) => {
             console.error(error);
             res.json({ success: false, message: 'Error al crear el usuario' });
         } else {
-            res.json({ success: true, message: 'Medico creado exitosamente' });
+            // res.json({ success: true, message: 'Medico creado exitosamente' });
+            res.render('controllers', {auth: 'Bienvenido' });
         }
     });
 });
@@ -282,9 +289,11 @@ router.get('/Views/editMedico/:id', (req, res) => {
             res.render('error', { message: 'Error al obtener datos del usuario' });
         } else {
             res.render('editMedico', { medico: result[0] });
+            // console.log(result[0]);
         }
     });
 });
+
 
 router.post('/editMedico/:id', (req, res) => {
     const userId = req.params.id;
@@ -295,7 +304,7 @@ router.post('/editMedico/:id', (req, res) => {
             console.error(error);
             res.json({ success: false, message: 'Error al editar el usuario' });
         } else {
-            res.json({ success: true, message: 'Medico editado exitosamente' });
+            res.render('controllers', {auth: 'Bienvenido' });
         }
     });
 });

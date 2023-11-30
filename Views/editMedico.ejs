@@ -1,6 +1,6 @@
 <div class="registro-container">
   <h2>Registro de Medicos</h2>
-  <form id="formulario" action="/editMedico/<%= medico.id %>" method="post" onsubmit="return enviarFormularioUpdateMedico('<%= medico.id %>')">
+  <form id="formulario-medico" action="/editMedico/<%= medico.id %>" method="post" onsubmit="return enviarFormularioUpdateMedico('<%= medico.id %>')">
       <label for="foto">Fotografia:</label>
       <input type="text" id="foto" name="fotografia" value="<%= medico.fotografia %>" required />
 
@@ -17,8 +17,7 @@
       <input type="email" id="email-medico" name="email" value="<%= medico.email %>" required />
 
       <label for="descripcion">Descripción:</label>
-      <textarea name="descripcion" id="descripcion" cols="30" rows="10" value="<%= medico.descripcion %>"></textarea>
-      <!-- <input type="text" id="descripcion" name="descripcion" required /> -->
+      <input type="text" id="descripcion" name="descripcion" value="<%= medico.descripcion %>" required />
 
       <label for="educacion">Educacion:</label>
       <input type="text" id="educacion" name="educacion" value="<%= medico.educacion %>" required />
@@ -33,6 +32,5 @@
       <input type="number" id="id_especialidad" name="id_especialidad" value="<%= medico.id_especialidad %>" required />
 
       <button type="submit" class="registro-button" onclick="enviarFormularioUpdateMedico('<%= medico.id %>')">Actualizar</button>
-
   </form>
 </div>
