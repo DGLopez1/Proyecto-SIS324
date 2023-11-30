@@ -245,7 +245,7 @@ body {
 .main .contenido .sevicices h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #007BFF;
+  color: #007bff;
 }
 .main .contenido .sevicices .container-servicios {
   display: flex;
@@ -282,7 +282,7 @@ body {
 }
 .main .contenido .sevicices .container-servicios .servicios-list .servicio-item a {
   display: inline-block;
-  background-color: #007BFF;
+  background-color: #007bff;
   color: #fff;
   padding: 8px 16px;
   border-radius: 5px;
@@ -292,7 +292,8 @@ body {
 .main .contenido .sevicices .container-servicios .servicios-list .servicio-item a:hover {
   background-color: #0056b3;
 }
-.main .contenido .sevicices .container-servicios .tarifas, .main .contenido .sevicices .container-servicios .testimonios {
+.main .contenido .sevicices .container-servicios .tarifas,
+.main .contenido .sevicices .container-servicios .testimonios {
   width: 100%;
   max-width: 500px;
   background-color: #f8f9fa;
@@ -301,59 +302,59 @@ body {
   margin-bottom: 20px;
   text-align: center;
 }
-.main .contenido .sevicices .container-servicios .tarifas a, .main .contenido .sevicices .container-servicios .testimonios a {
+.main .contenido .sevicices .container-servicios .tarifas a,
+.main .contenido .sevicices .container-servicios .testimonios a {
   display: inline-block;
-  background-color: #007BFF;
+  background-color: #007bff;
   color: #fff;
   padding: 8px 16px;
   border-radius: 5px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.main .contenido .sevicices .container-servicios .tarifas a:hover, .main .contenido .sevicices .container-servicios .testimonios a:hover {
+.main .contenido .sevicices .container-servicios .tarifas a:hover,
+.main .contenido .sevicices .container-servicios .testimonios a:hover {
   background-color: #0056b3;
-}/*# sourceMappingURL=styles.css.map */
-
-.about {
-  background-color: #f8f9fa;
-  padding: 10px 0;
-  text-align: center;
 }
-
-.about h2 {
-  color: #007BFF;
-  font-size: 2rem;
-  margin-bottom: 20px;
+.main .contenido .specialties-list {
+  display: flex;
+  flex-direction: column;
 }
-
-.about h3 {
-  color: #007BFF;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.about .container {
-  width: 100%;
-  margin: 0 auto;
-  max-height: 600px;
-  overflow-y: auto;
-}
-
-.about p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.about ul {
+.main .contenido .specialties-list ul {
   list-style: none;
   padding: 0;
-}
-
-.iconos-about {
+  margin: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
+.main .contenido .specialties-list ul .specialty-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease-in-out;
+}
+.main .contenido .specialties-list ul .specialty-card:hover {
+  transform: scale(1.05);
+}
+.main .contenido .specialties-list ul .specialty-card .specialty-image {
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+.main .contenido .specialties-list ul .specialty-card .specialty-content {
+  padding: 15px;
+}
+.main .contenido .specialties-list ul .specialty-card .specialty-content .specialty-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+.main .contenido .specialties-list ul .specialty-card .specialty-content .specialty-description {
+  font-size: 1em;
+  color: #666;
+}/*# sourceMappingURL=styles.css.map */

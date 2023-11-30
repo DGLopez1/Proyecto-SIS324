@@ -43,30 +43,105 @@ router.get('/Views/register', (req, res)=>{
 
 
 //? PARA EL LOGIN 
-router.post('/Views/controllers', (req, res) =>{
+
+router.post('/Views/controllers', (req, res) => {
     var email = req.body.email;
     var password = req.body.password;
-    if(email && password){
-        Database.query('SELECT * FROM usuarios WHERE email = ?', [email], (error, result)=>{
-            if(result.length == 0 || result[0].password != password){
-                res.render('login',{
-                    alert: true,
-                    alertTitle: 'Error',
-                    alertMessage: 'Email o contraseña incorrectos',
-                    alertIcon: 'error',
-                    showConfirmButton: true,
-                    timer: 4000,
-                    ruta: 'Views/login'   
-                  } );
-            }else{
-               // req.session.cuenta= result[0].cuenta;
-                res.render('controllers', {auth: '"Bienvenido   '+result[0].nombre+'"' });
-            }
-        })
-    }else{
-        res.send('Por favor ingrese email y contraseña');
+
+    var password_medico = password.length;
+
+    if (email && password) {
+
+        if(password_medico >= 7){
+            Database.query('SELECT * FROM medicos WHERE email = ?', [email], (error_medicos, result_medicos) => {
+
+                if (error_medicos) {
+                    console.error("Error en la consulta de médicos:", error_medicos);
+                    res.status(500).send('Error en la consulta de médicos');
+                    return;
+                }
+    
+                if (result_medicos[0].telefono == password) {
+    
+                    console.log(result_medicos[0].telefono + password);
+                    req.session.usuario = {
+                        fotografia: result_medicos[0].fotografia,
+                        nombre: result_medicos[0].nombre,
+                        apellido: result_medicos[0].apellido,
+                        telefono: result_medicos[0].telefono,
+                        email: result_medicos[0].email,
+                        descripcion: result_medicos[0].descripcion,
+                        educacion: result_medicos[0].educacion,
+                        direccion: result_medicos[0].direccion,
+                        horarios: result_medicos[0].horarios,
+                        id_especialidad: result_medicos[0].id_especialidad,
+                        tipo: "medico",
+                        id: result_medicos[0].id
+                    };
+                    res.redirect('/');
+                } else {
+                    res.render('login', {
+                        alert: true,
+                        alertTitle: 'Error',
+                        alertMessage: 'Email o contraseña incorrectos para médicos',
+                        alertIcon: 'error',
+                        showConfirmButton: true,
+                        timer: 4000,
+                        ruta: 'Views/login'
+                    });
+                }
+            });
+        }else{
+
+            Database.query('SELECT * FROM usuarios WHERE email = ?', [email], (error, result) => {
+                if (error) {
+                    console.error("Error en la consulta de usuarios:", error);
+                    res.status(500).send('Error en la consulta de usuarios');
+                    return;
+                }
+    
+                if (result.length == 0 || result[0].password != password) {
+                    res.render('login', {
+                        alert: true,
+                        alertTitle: 'Error',
+                        alertMessage: 'Email o contraseña incorrectos',
+                        alertIcon: 'error',
+                        showConfirmButton: true,
+                        timer: 4000,
+                        ruta: 'Views/login'
+                    });
+                } else {
+                    if (result[0].rol == 'admin') {
+                        res.render('controllers', { auth: '"Bienvenido   ' + result[0].nombre + '"' });
+                    } else {
+                        if (result[0].rol == 'usuario') {
+                            if (result.length > 0) {
+                                req.session.usuario = {
+                                    nombre: result[0].nombre,
+                                    apellido: result[0].apellido,
+                                    cuenta: result[0].cuenta,
+                                    email: result[0].email,
+                                    password: result[0].password,
+                                    rol: 'usuario',
+                                    tipo: 'normal',
+                                    id: result[0].id
+                                };
+                                res.redirect('/');
+                            }
+                        } 
+                    }
+                }
+    
+            });
+        }
+    } else {
+        res.send('Por favor ingrese email y contraseña');
     }
-})
+});
+
+
+
+
 
 
 //? PARA LISTA DE MEDICOS
@@ -140,9 +215,34 @@ router.get('/medicos', (req, res) =>{
 });
 
 
+
+
+
+//? PARA MOSTRAR ESPECIALIDADES
+router.get('/especialidades', (req, res) =>{
+ 
+     var sql = "SELECT * FROM especialidad";
+
+     Database.query(sql, (error, results) => {
+
+         if(error){
+             throw error;
+         }else{
+             res.render('especialidades', {listaEspecialidades: results});
+         }
+     });
+ });
+
+
+
+
+
+
+
 //Para about
 const ejs = require('ejs');
 const path = require('path');
+const { error } = require("console");
 
 router.get('/about', function(req, res) {
     console.log("Accediendo a la ruta /about");
@@ -251,7 +351,9 @@ router.delete('/deleteUsuario/:id', (req, res) => {
 
 
   //TODO: GESTION DE MEDICOS
-  // CREAR UN NUEVO MEDICO
+
+
+//? CREAR UN NUEVO MEDICO
 router.post('/createMedico', (req, res) => {
     const fotografia = req.body.fotografia;
     const nombre = req.body.nombre;
@@ -285,6 +387,7 @@ router.post('/createMedico', (req, res) => {
         }
     });
 });
+
 
 
 
@@ -396,7 +499,7 @@ router.post('/createUsuarioMedico', (req, res) => {
                     rol : '1',
                     tipo : tipoUsuario,
                     id: usuarioId // Usa el ID del médico insertado
-        };
+                };
                 res.redirect('/');
             }
         });

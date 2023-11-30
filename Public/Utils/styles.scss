@@ -281,27 +281,19 @@ body {
             }
         }
 
-
-
-
-
-
-        
-
         // STYLES PARA SERVICES
 
-
-        .sevicices{
+        .sevicices {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
             overflow-y: auto;
-            
-            h2{
+
+            h2 {
                 font-size: 2rem;
                 margin-bottom: 20px;
-                color: #007BFF;
+                color: #007bff;
             }
 
             .container-servicios {
@@ -310,56 +302,55 @@ body {
                 // align-items: center;
                 margin: 0 auto;
                 padding: 20px;
-    
-    
+
                 .servicios-list {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     list-style: none;
                     padding: 0;
-    
+
                     .servicio-item {
                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                         border-radius: 5px;
                         padding: 20px;
                         margin: 10px;
                         transition: all 0.3s ease;
-    
+
                         img {
                             max-width: 100%;
                             height: auto;
                             border-radius: 5px;
                         }
-    
+
                         h3 {
                             font-size: 24px;
                             margin-bottom: 10px;
                         }
-    
+
                         p {
                             font-size: 16px;
                             margin-bottom: 10px;
                         }
-    
+
                         a {
                             display: inline-block;
-                            background-color: #007BFF;
+                            background-color: #007bff;
                             color: #fff;
                             padding: 8px 16px;
                             border-radius: 5px;
                             text-decoration: none;
                             transition: all 0.3s ease;
-    
+
                             &:hover {
                                 background-color: #0056b3;
                             }
                         }
                     }
                 }
-    
-    
-                .tarifas, .testimonios {
+
+                .tarifas,
+                .testimonios {
                     width: 100%;
                     max-width: 500px;
                     background-color: #f8f9fa;
@@ -368,22 +359,74 @@ body {
                     margin-bottom: 20px;
                     text-align: center;
                 }
-    
-                .tarifas a, .testimonios a {
+
+                .tarifas a,
+                .testimonios a {
                     display: inline-block;
-                    background-color: #007BFF;
+                    background-color: #007bff;
                     color: #fff;
                     padding: 8px 16px;
                     border-radius: 5px;
                     text-decoration: none;
                     transition: all 0.3s ease;
                 }
-    
-                .tarifas a:hover, .testimonios a:hover {
+
+                .tarifas a:hover,
+                .testimonios a:hover {
                     background-color: #0056b3;
                 }
             }
         }
-        
+
+        // ESTILOS PARA ESPECIALIDADES
+        .specialties-list {
+            display: flex;
+            flex-direction: column;
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+
+                .specialty-card {
+                    background-color: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    margin: 15px;
+                    overflow: hidden;
+                    width: 300px;
+                    transition: transform 0.3s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+
+                    .specialty-image {
+                        width: 100%;
+                        height: 150px;
+                        background-size: cover;
+                        background-position: center;
+                    }
+
+                    .specialty-content {
+                        padding: 15px;
+
+                        .specialty-title {
+                            font-size: 1.5em;
+                            margin-bottom: 10px;
+                            color: #333;
+                        }
+
+                        .specialty-description {
+                            font-size: 1em;
+                            color: #666;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

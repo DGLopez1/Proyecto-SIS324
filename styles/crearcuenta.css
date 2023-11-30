@@ -115,3 +115,59 @@
     transform: scale(1.1);
     transition: 0.1s;
   }
+
+
+
+
+
+
+
+  
+
+
+
+
+    .specialties-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .specialty-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 15px;
+        overflow: hidden;
+        width: 300px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .specialty-card:hover {
+        transform: scale(1.05);
+    }
+
+    .specialty-image {
+        width: 100%;
+        height: 150px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .specialty-content {
+        padding: 15px;
+    }
+
+    .specialty-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .specialty-description {
+        font-size: 1em;
+        color: #666;
+    }
