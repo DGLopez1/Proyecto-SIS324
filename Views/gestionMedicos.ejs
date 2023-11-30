@@ -39,8 +39,8 @@
                   <td><%= medico.email %></td>
                   <td><%= medico.educacion %></td>
                   <td>
-                    <button data-action="editar" onclick="javascript:formEditMedico('<%= medico.id %>');">Editar</button>
-                    <button data-action="eliminar" onclick="javascript:eliminarMedico('<%= medico.id %>');">Eliminar</button>
+                    <button data-action="editar" onclick="editarMedico('<%= medico.id %>')">Editar</button>
+                    <button class="btn_eliminar" onclick="eliminarMedico('<%= medico.id %>')">Eliminar</button>
                   </td>
                 </tr>
               <% }); %>

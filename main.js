@@ -199,7 +199,7 @@ function enviarFormularioUpdate(userId) {
 
 
 
-//? Para el metodo DELETE
+//? Para el metodo DELETE USUARIOS
 function eliminarUsuario(userId) {
   if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
     // Realiza la solicitud fetch para eliminar el usuario
@@ -218,6 +218,11 @@ function eliminarUsuario(userId) {
     .catch(error => console.error('Error:', error));
   }
 }
+
+
+
+
+
 
 
 
@@ -282,3 +287,96 @@ function enviarFormCreateMedico(){
 }
 
 
+//? PARA EL UPDATE MEDICOS
+
+function cargarFormEditMedico(content) {
+  var contenido = document.getElementById('container-medicos');
+  
+  fetch(content)
+      .then(response => response.text())
+      .then(data => {
+          contenido.innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
+}
+
+function editarMedico(userId) {
+  cargarFormEditMedico(`/Views/editMedico/${userId}`);
+}
+
+
+function enviarFormularioUpdateMedico(userId) {
+  
+  var fotografia = document.getElementById('fotografia').value;
+  var nombre = document.getElementById('nombre-medico').value;
+  var apellido = document.getElementById('apellido-medico').value;
+  var telefono = document.getElementById('telefono').value;
+  var email = document.getElementById('email-medico').value;
+  var descripcion = document.getElementById('descripcion').value;
+  var educacion = document.getElementById('educacion').value;
+  var direccion = document.getElementById('direccion').value;
+  var horarios = document.getElementById('horarios').value;
+  var id_especialidad = document.getElementById('id_especialidad').value;
+
+  // Construir el objeto de datos para enviar al servidor
+  const updatedMedicoData = {
+    fotografia: fotografia,
+    nombre: nombre,
+    apellido: apellido,
+    telefono: telefono,
+    email: email,
+    descripcion: descripcion,
+    educacion: educacion,
+    direccion: direccion,
+    horarios: horarios,
+    id_especialidad: id_especialidad
+  };
+
+  // Realizar la petición fetch al servidor para actualizar el usuario
+  fetch(`/editMedico/${userId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedMedicoData)
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Redirigir a la página de gestión de usuarios después de la edición
+        // cargarGestionUsuarios();
+        cargarGestionMedicos();
+      } else {
+        // Manejar errores o mostrar mensajes de error
+        console.error(data.message);
+      }
+    })
+    .catch(error => console.error('Error:', error));
+
+  // Retorna false para evitar que el formulario se envíe de la manera tradicional
+  return false;
+}
+
+
+
+
+//? Para el metodo DELETE MEDICOS
+function eliminarMedico(userId) {
+  if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+    // Realiza la solicitud fetch para eliminar el usuario
+    fetch(`/deleteMedico/${userId}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Recarga la gestión de usuarios después de la eliminación
+        // cargarGestionUsuarios();
+        cargarGestionMedicos();
+      } else {
+        console.error(data.message);
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  }
+}
