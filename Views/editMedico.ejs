@@ -1,25 +1,38 @@
 <div class="registro-container">
-    <h2>Registro de Medicos</h2>
-    <div id="formulario">
-
+  <h2>Registro de Medicos</h2>
+  <form id="formulario" action="/editMedico/<%= medico.id %>" method="post" onsubmit="return enviarFormularioUpdateMedico('<%= medico.id %>')">
       <label for="foto">Fotografia:</label>
-      <input type="text" id="foto" value="${medico.foto}" name="nombre" required />
+      <input type="text" id="foto" name="fotografia" value="<%= medico.fotografia %>" required />
 
       <label for="nombre-medico">Nombre:</label>
-      <input type="text" id="nombre-medico" value="${medico.nombre}" name="nombre" required />
+      <input type="text" id="nombre-medico" name="nombre" value="<%= medico.nombre %>" required />
 
-      <label for="apellido-medico">Cuenta:</label>
-      <input type="text" id="apellido-medico" value="${medico.apellido}" name="cuenta" required />
+      <label for="apellido-medico">Apellido:</label>
+      <input type="text" id="apellido-medico" name="apellido" value="<%= medico.apellido %>" required />
 
-      <label for="telefono">Contraseña:</label>
-      <input type="number" id="telefono" value="${medico.telefono}" name="password" required />
+      <label for="telefono">Telefono:</label>
+      <input type="text" id="telefono" name="telefono" value="<%= medico.telefono %>" required />
 
       <label for="email">Email:</label>
-      <input type="email" id="email-medico" value="${medico.email}" name="email" required />
-      
-      <label for="especialidad">Especialidad:</label>
-      <input type="text" id="especialidad-medico" value="${especialidad.nombreEsp}" name="email" required />
+      <input type="email" id="email-medico" name="email" value="<%= medico.email %>" required />
 
-      <button class="registro-button" id="btn_editar" onclick="editarMedico()">Actualizar</button> 
-    </div>
-    </div>
+      <label for="descripcion">Descripción:</label>
+      <textarea name="descripcion" id="descripcion" cols="30" rows="10" value="<%= medico.descripcion %>"></textarea>
+      <!-- <input type="text" id="descripcion" name="descripcion" required /> -->
+
+      <label for="educacion">Educacion:</label>
+      <input type="text" id="educacion" name="educacion" value="<%= medico.educacion %>" required />
+
+      <label for="email">Dirección:</label>
+      <input type="text" id="direccion" name="direccion" value="<%= medico.direccion %>" required />
+
+      <label for="horarios">Horarios:</label>
+      <input type="text" id="horarios" name="horarios" value="<%= medico.horarios %>" required />
+
+      <label for="especialidad">Especialidad:</label>
+      <input type="number" id="id_especialidad" name="id_especialidad" value="<%= medico.id_especialidad %>" required />
+
+      <button type="submit" class="registro-button" onclick="enviarFormularioUpdateMedico('<%= medico.id %>')">Actualizar</button>
+
+  </form>
+</div>

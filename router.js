@@ -272,6 +272,59 @@ router.post('/createMedico', (req, res) => {
 
 
 
+//? PARA EDITAR MEDICOS
+router.get('/Views/editMedico/:id', (req, res) => {
+    const userId = req.params.id;
+    // Recupera la información del usuario con el ID y pasa los datos a la vista
+    Database.query('SELECT * FROM medicos WHERE id = ?', [userId], (error, result) => {
+        if (error) {
+            console.error(error);
+            res.render('error', { message: 'Error al obtener datos del usuario' });
+        } else {
+            res.render('editMedico', { medico: result[0] });
+        }
+    });
+});
+
+router.post('/editMedico/:id', (req, res) => {
+    const userId = req.params.id;
+    const updatedData = req.body; // Datos actualizados del formulario
+
+    Database.query('UPDATE medicos SET ? WHERE id = ?', [updatedData, userId], (error, result) => {
+        if (error) {
+            console.error(error);
+            res.json({ success: false, message: 'Error al editar el usuario' });
+        } else {
+            res.json({ success: true, message: 'Medico editado exitosamente' });
+        }
+    });
+});
+
+
+//? PARA EL DELETE DEL MEDICO
+router.delete('/deleteMedico/:id', (req, res) => {
+    const userId = req.params.id;
+  
+    Database.query('DELETE FROM medicos WHERE id = ?', [userId], (error, result) => {
+      if (error) {
+        console.error(error);
+        res.json({ success: false, message: 'Error al eliminar el usuario' });
+      } else {
+        res.json({ success: true, message: 'Medico eliminado exitosamente' });
+      }
+    });
+  });
+
+
+
+-
+
+
+
+
+
+
+
 //? CREAR USUARIO MEDICO O NORMAL POR EL MISMO USUARIO 
 router.get('/crearusuario', (req, res) => {
     var sqlEspecialidades = "SELECT * FROM especialidad";
