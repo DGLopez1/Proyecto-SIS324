@@ -214,12 +214,7 @@ router.post('/editUsuario/:id', (req, res) => {
             console.error(error);
             res.json({ success: false, message: 'Error al editar el usuario' });
         } else {
-           if(res.session.usuario) {
-                res.redirect('/')
-            }else {
             res.json({ success: true, message: 'Usuario editado exitosamente' });
-            res.render('editUser', { usuario: result[0]})
-            }              
         }
     });
 });
@@ -243,12 +238,6 @@ router.delete('/deleteUsuario/:id', (req, res) => {
 
 
   
-
-
-
-
-
-
 
   //TODO: GESTION DE MEDICOS
   // CREAR UN NUEVO MEDICO
@@ -280,66 +269,10 @@ router.post('/createMedico', (req, res) => {
             console.error(error);
             res.json({ success: false, message: 'Error al crear el usuario' });
         } else {
-            // res.json({ success: true, message: 'Medico creado exitosamente' });
-            res.render('controllers', {auth: 'Bienvenido' });
+            res.json({ success: true, message: 'Medico creado exitosamente' });
         }
     });
 });
-
-
-
-//? PARA EDITAR MEDICOS
-router.get('/Views/editMedico/:id', (req, res) => {
-    const userId = req.params.id;
-    // Recupera la información del usuario con el ID y pasa los datos a la vista
-    Database.query('SELECT * FROM medicos WHERE id = ?', [userId], (error, result) => {
-        if (error) {
-            console.error(error);
-            res.render('error', { message: 'Error al obtener datos del usuario' });
-        } else {
-            res.render('editMedico', { medico: result[0] });
-            // console.log(result[0]);
-        }
-    });
-});
-
-
-router.post('/editMedico/:id', (req, res) => {
-    const userId = req.params.id;
-    const updatedData = req.body; // Datos actualizados del formulario
-
-    Database.query('UPDATE medicos SET ? WHERE id = ?', [updatedData, userId], (error, result) => {
-        if (error) {
-            console.error(error);
-            res.json({ success: false, message: 'Error al editar el usuario' });
-        } else {
-            res.render('controllers', {auth: 'Bienvenido' });
-        }
-    });
-});
-
-
-//? PARA EL DELETE DEL MEDICO
-router.delete('/deleteMedico/:id', (req, res) => {
-    const userId = req.params.id;
-  
-    Database.query('DELETE FROM medicos WHERE id = ?', [userId], (error, result) => {
-      if (error) {
-        console.error(error);
-        res.json({ success: false, message: 'Error al eliminar el usuario' });
-      } else {
-        res.json({ success: true, message: 'Medico eliminado exitosamente' });
-      }
-    });
-  });
-
-
-
--
-
-
-
-
 
 
 
@@ -474,12 +407,58 @@ router.get('/logout', (req, res) => {
 
 router.get('/editarUsuario', (req, res) => {
     
-    res.render('editUser', { usuario: req.session.usuario });
+    res.render('editarUsuario', { usuario: req.session.usuario });
 });
 
 router.get('/editarMedico', (req, res) => {
     
-    res.render('medicos', {listaMedicos: req.session.usuario});
+    res.render('editarMedico', { medico: req.session.usuario });
+});
+
+
+router.post('/editarUsuario/:id', (req, res) => {
+    // Verifica si la sesión del usuario está activa
+    if (!req.session.usuario) {
+        return res.status(403).json({ success: false, message: 'Sesión no activa' });
+    }
+
+    const userId = req.session.usuario.id;
+    const updatedData = req.body; // Datos actualizados del formulario
+
+    Database.query('UPDATE usuarios SET ? WHERE id = ?', [updatedData, userId], (error, result) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ success: false, message: 'Error al editar el usuario' });
+        }
+
+        req.session.usuario = { ...req.session.usuario, ...updatedData };
+        
+        // Redirige a la dirección '/' solo si la sesión está activa
+        return res.redirect('/');
+    });
+});
+
+
+router.post('/editarMedico/:id', (req, res) => {
+    // Verifica si la sesión del usuario está activa
+    if (!req.session.usuario) {
+        return res.status(403).json({ success: false, message: 'Sesión no activa' });
+    }
+
+    const medicoId = req.params.id;
+    const updatedData = req.body; // Datos actualizados del formulario
+
+    Database.query('UPDATE medicos SET ? WHERE id = ?', [updatedData, medicoId], (error, result) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ success: false, message: 'Error al editar el médico' });
+        }
+
+        req.session.usuario = { ...req.session.usuario, ...updatedData };
+        
+        // Redirige a la dirección '/' solo si la sesión está activa
+        return res.redirect('/');
+    });
 });
 
 
