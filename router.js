@@ -230,21 +230,6 @@ router.get('/especialidades', (req, res) => {
       }
     });
 });
-  
-
-// router.get('/especialidades', (req, res) => {
-//     var sqlEspecialidades = "SELECT * FROM especialidad";
-    
-//     Database.query(sqlEspecialidades, (errorEspecialidades, resultadosEspecialidades) => {
-//         if (errorEspecialidades) {
-//             throw errorEspecialidades;
-//         } else {
-//             res.render('especialidades', { especialidades: resultadosEspecialidades });
-//         }
-//     });
-// });
-
-
 
 
 
@@ -268,9 +253,6 @@ router.get('/about', function(req, res) {
 });
 
 
-
-// const crudUser = require('./Controllers/constrolUser');
-// router.post('/createUsuario', crudUser.createUsuario);
 
 //? GESTION DE USUARIOS
 
@@ -434,8 +416,6 @@ router.delete('/deleteMedico/:id', (req, res) => {
       }
     });
   });
-
-
 
 
 

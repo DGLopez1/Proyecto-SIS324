@@ -17,7 +17,6 @@ const Database = mysql.createConnection({
 // console.log('PORT:', process.env.PORT);
 
 
-
 Database.connect((error) =>{
     if(error){
         console.error('El error de conexión es: ' + error);

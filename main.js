@@ -40,10 +40,6 @@ function cargarEspecialidades(){
 }
 
 
-// app.get('/about', function(req, res) {
-//   res.render('about');
-// });
-
 function abrirLogin() {
     // Abre la ruta /Views/login definida en router.js en una nueva ventana
     window.open('/Views/login', '_blank');
@@ -238,10 +234,6 @@ function eliminarUsuario(userId) {
 
 
 
-
-
-
-
 //todo:  GESTION DE MEDICOS
 
 function cargarFormRegisterMedico(content) {
@@ -370,16 +362,6 @@ function enviarFormularioUpdateMedico(userId) {
 
   return false;
 }
-
-
-// Enviar formulario cuando se hace clic en el botón de actualizar
-// document.getElementById('formulario-medico').addEventListener('click', function (event) {
-//   event.preventDefault(); // Evitar el comportamiento predeterminado del botón
-//   enviarFormularioUpdateMedico('<%= medico.id %>');
-// });
-
-
-
 
 
 
