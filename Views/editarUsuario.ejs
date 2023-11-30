@@ -1,6 +1,7 @@
+<link rel="stylesheet" href="/Utils/controllers.css">
 <div class="registro-container">
     <h2>EDITAR USUARIO</h2>
-    <form id="formulario" action="/editUsuario/<%= usuario.id %>" method="post" onsubmit="return enviarFormularioUpdate('<%= usuario.id %>')">
+    <form id="formulario" action="/editarUsuario/<%= usuario.id %>" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" value="<%= usuario.nombre %>" name="nombre" required />
 
@@ -22,7 +23,7 @@
             <option value="usuario">Usuario</option>
         </select>
 
-        <button id="guardar-edicion" onclick="enviarFormularioUpdate('<%= usuario.id %>')">Actualizar</button>
+        <button type="submit">Actualizar</button>
 
     </form>
 </div>
